@@ -1,0 +1,9 @@
+# Place at the ROOT of the site being deployed.
+[build]
+  functions = "netlify/functions"
+
+# Pretty URL: the front-end calls /api/ask, which routes to the function.
+[[redirects]]
+  from = "/api/ask"
+  to = "/.netlify/functions/ask"
+  status = 200
