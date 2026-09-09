@@ -1,0 +1,106 @@
+# Fallbrook load — build report
+
+- Organizers loaded: **106**
+- Events (series): **55**
+- Occurrences materialized: **50**
+- Sources: **11**
+- Orphan events (Organizer ID not in roster): **0**
+
+## Hand-picked / normalized categories
+- EVT-035: hand-picked 'Food/Fundraiser' -> Fundraiser +['food']
+
+## Events with ZERO occurrences (rrule stored; live agent materializes on first run)
+- EVT-003 — recurrence 'Weekly — every Saturday' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=SA
+- EVT-004 — recurrence 'Weekly — Wednesdays (VERIFY dates)' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=WE
+- EVT-005 — recurrence 'Weekly — Mondays (confirm on BiblioCommons)' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=MO
+- EVT-006 — recurrence 'Weekly — Mondays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=MO
+- EVT-007 — recurrence 'Weekly — Wednesdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=WE
+- EVT-008 — recurrence 'Weekly — Wednesdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=WE
+- EVT-010 — recurrence 'Weekly — Thursdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=TH
+- EVT-011 — recurrence 'Weekly — Thursdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=TH
+- EVT-012 — recurrence 'Weekly — Thursdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=TH
+- EVT-013 — recurrence 'Weekly — Fridays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=FR
+- EVT-014 — recurrence 'Weekly — Fridays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=FR
+- EVT-015 — recurrence 'Weekly — Saturdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=SA
+- EVT-016 — recurrence 'Weekly — Saturdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=SA
+- EVT-017 — recurrence 'Weekly — Tuesdays' — rule (no occ; agent materializes) — rrule=FREQ=WEEKLY;BYDAY=TU
+- EVT-018 — recurrence 'Monthly — first Monday' — rule (no occ; agent materializes) — rrule=FREQ=MONTHLY;BYDAY=1MO
+- EVT-024 — recurrence 'Monthly — typically a Tuesday ~1 PM' — vague (flagged) — rrule=None
+- EVT-034 — recurrence 'Monthly — first Friday' — rule (no occ; agent materializes) — rrule=FREQ=MONTHLY;BYDAY=1FR
+- EVT-054 — recurrence 'Annual — date TBD' — vague (flagged) — rrule=None
+- EVT-055 — recurrence 'Periodic — dates TBD' — vague (flagged) — rrule=None
+
+## FLAGGED recurrences (vague / verify — not guessed)
+- EVT-004 — 'Weekly — Wednesdays (VERIFY dates)' — rule (no occ; agent materializes) — flag: Weekly — Wednesdays (VERIFY dates)
+- EVT-005 — 'Weekly — Mondays (confirm on BiblioCommons)' — rule (no occ; agent materializes) — flag: Weekly — Mondays (confirm on BiblioCommons)
+- EVT-009 — 'Weekly — Wed afternoons (confirm time)' — fallback->start only — flag: unrecognized recurrence: Weekly — Wed afternoons (confirm time)
+- EVT-019 — 'Monthly' — vague (flagged) — flag: Monthly
+- EVT-020 — 'Monthly' — vague (flagged) — flag: Monthly
+- EVT-021 — 'Monthly' — vague (flagged) — flag: Monthly
+- EVT-022 — 'Monthly' — vague (flagged) — flag: Monthly
+- EVT-023 — 'Monthly' — vague (flagged) — flag: Monthly
+- EVT-024 — 'Monthly — typically a Tuesday ~1 PM' — vague (flagged) — flag: Monthly — typically a Tuesday ~1 PM
+- EVT-025 — 'Seasonal — runs into August' — vague (flagged) — flag: Seasonal — runs into August
+- EVT-026 — 'Ongoing — Tue-Sat (closed Sun/Mon)' — vague (flagged) — flag: Ongoing — Tue-Sat (closed Sun/Mon)
+- EVT-027 — 'Ongoing — all summer' — vague (flagged) — flag: Ongoing — all summer
+- EVT-050 — 'Runs Aug 25 - Sep 17' — range (only start materialized) — flag: continuous run Runs Aug 25 - Sep 17
+- EVT-053 — 'Weekly — Sat 5:30; Sun 9 & 11' — fallback->start only — flag: unrecognized recurrence: Weekly — Sat 5:30; Sun 9 & 11
+- EVT-054 — 'Annual — date TBD' — vague (flagged) — flag: Annual — date TBD
+- EVT-055 — 'Periodic — dates TBD' — vague (flagged) — flag: Periodic — dates TBD
+
+## Full disposition (every event)
+- EVT-001: enumerated; 5 occ; rrule=FREQ=WEEKLY;BYDAY=SA; rec='Weekly — every Saturday (Aug 1,8,15,22,29)'
+- EVT-002: enumerated; 4 occ; rrule=FREQ=WEEKLY;BYDAY=FR; rec='Weekly — every Friday (Aug 7,14,21,28)'
+- EVT-003: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=SA; rec='Weekly — every Saturday'
+- EVT-004: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=WE; rec='Weekly — Wednesdays (VERIFY dates)'
+- EVT-005: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=MO; rec='Weekly — Mondays (confirm on BiblioCommons)'
+- EVT-006: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=MO; rec='Weekly — Mondays'
+- EVT-007: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=WE; rec='Weekly — Wednesdays'
+- EVT-008: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=WE; rec='Weekly — Wednesdays'
+- EVT-009: fallback->start only; 1 occ; rrule=None; rec='Weekly — Wed afternoons (confirm time)'
+- EVT-010: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=TH; rec='Weekly — Thursdays'
+- EVT-011: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=TH; rec='Weekly — Thursdays'
+- EVT-012: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=TH; rec='Weekly — Thursdays'
+- EVT-013: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=FR; rec='Weekly — Fridays'
+- EVT-014: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=FR; rec='Weekly — Fridays'
+- EVT-015: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=SA; rec='Weekly — Saturdays'
+- EVT-016: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=SA; rec='Weekly — Saturdays'
+- EVT-017: rule (no occ; agent materializes); 0 occ; rrule=FREQ=WEEKLY;BYDAY=TU; rec='Weekly — Tuesdays'
+- EVT-018: rule (no occ; agent materializes); 0 occ; rrule=FREQ=MONTHLY;BYDAY=1MO; rec='Monthly — first Monday'
+- EVT-019: vague (flagged); 1 occ; rrule=None; rec='Monthly'
+- EVT-020: vague (flagged); 1 occ; rrule=None; rec='Monthly'
+- EVT-021: vague (flagged); 1 occ; rrule=None; rec='Monthly'
+- EVT-022: vague (flagged); 1 occ; rrule=None; rec='Monthly'
+- EVT-023: vague (flagged); 1 occ; rrule=None; rec='Monthly'
+- EVT-024: vague (flagged); 0 occ; rrule=None; rec='Monthly — typically a Tuesday ~1 PM'
+- EVT-025: vague (flagged); 1 occ; rrule=None; rec='Seasonal — runs into August'
+- EVT-026: vague (flagged); 1 occ; rrule=None; rec='Ongoing — Tue-Sat (closed Sun/Mon)'
+- EVT-027: vague (flagged); 1 occ; rrule=None; rec='Ongoing — all summer'
+- EVT-028: one-time; 1 occ; rrule=None; rec='Final of 3-part series'
+- EVT-029: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-030: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-031: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-032: enumerated; 1 occ; rrule=FREQ=WEEKLY;BYDAY=MO; rec='Weekly — Mondays, begins Aug 3'
+- EVT-033: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-034: rule (no occ; agent materializes); 0 occ; rrule=FREQ=MONTHLY;BYDAY=1FR; rec='Monthly — first Friday'
+- EVT-035: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-036: one-time; 1 occ; rrule=None; rec='One-time — final of 3-concert series'
+- EVT-037: enumerated; 4 occ; rrule=None; rec='Series — Jul 14, Aug 11, Sep 8, Oct 6'
+- EVT-038: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-039: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-040: two-day; 2 occ; rrule=None; rec='Two-day event'
+- EVT-041: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-042: enumerated; 2 occ; rrule=None; rec='Two sessions — Aug 15 & 29'
+- EVT-043: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-044: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-045: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-046: enumerated; 2 occ; rrule=None; rec='Two sessions — Aug 22 & 29'
+- EVT-047: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-048: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-049: two-day; 2 occ; rrule=None; rec='Two-day drive'
+- EVT-050: range (only start materialized); 1 occ; rrule=None; rec='Runs Aug 25 - Sep 17'
+- EVT-051: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-052: one-time; 1 occ; rrule=None; rec='One-time'
+- EVT-053: fallback->start only; 1 occ; rrule=None; rec='Weekly — Sat 5:30; Sun 9 & 11'
+- EVT-054: vague (flagged); 0 occ; rrule=None; rec='Annual — date TBD'
+- EVT-055: vague (flagged); 0 occ; rrule=None; rec='Periodic — dates TBD'
