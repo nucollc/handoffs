@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pulse — Project map prototype</title>
+<style>
+:root{
+  --bg:#F3F1EC; --card:#FFFFFF; --sunk:#F8F6F2; --ink:#24211D; --ink-2:#6E685F; --ink-3:#9C968C;
+  --line:#E4DFD6; --line-2:#D3CDC2;
+  --accent:#B9531F; --accent-soft:#F6E6DB; --risk:#A3333B;
+  --done:#4F7F2C; --done-soft:#E6F0DA; --now:#2E6CAE; --now-soft:#E2EDF8;
+  --late:#C4851A; --late-soft:#F8EBD3; --urgent:#B53939; --urgent-soft:#F8E1E1;
+  --todo:#B3ADA2; --band:rgba(196,133,26,.15); --hold:#5D7186; --hold-soft:#E4EAF0;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --r:12px; --r-sm:8px;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#1C1A17; --card:#25221E; --sunk:#201E1A; --ink:#F1ECE4; --ink-2:#B5AEA3; --ink-3:#857E73;
+  --line:#3A3631; --line-2:#4A453E; --accent-soft:#3D2A1E; --done-soft:#26331C; --now-soft:#1C2B3B;
+  --late-soft:#3A2E17; --urgent-soft:#3D2222; --hold-soft:#252D36; --todo:#6E685F; --band:rgba(196,133,26,.18);
+}}
+:root[data-theme="dark"]{
+  --bg:#1C1A17; --card:#25221E; --sunk:#201E1A; --ink:#F1ECE4; --ink-2:#B5AEA3; --ink-3:#857E73;
+  --line:#3A3631; --line-2:#4A453E; --accent-soft:#3D2A1E; --done-soft:#26331C; --now-soft:#1C2B3B;
+  --late-soft:#3A2E17; --urgent-soft:#3D2222; --hold-soft:#252D36; --todo:#6E685F; --band:rgba(196,133,26,.18);
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer;background:var(--card);border:1px solid var(--line-2);border-radius:999px;padding:7px 15px}
+button:hover{border-color:var(--ink-3)}
+button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+button.quiet{border-color:transparent;background:transparent;color:var(--ink-2)}
+input,select{background:var(--card);border:1px solid var(--line-2);border-radius:var(--r-sm);padding:7px 10px;width:100%}
+label{display:block;font-size:13px;color:var(--ink-2);margin:12px 0 4px}
+.top{display:flex;align-items:center;gap:14px;padding:12px 24px;border-bottom:1px solid var(--line);background:var(--card);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:20px;font-weight:600;cursor:pointer}
+.logo svg{width:26px;height:26px}
+.top nav{display:flex;gap:4px;margin-left:12px}
+.top nav button{border-color:transparent;background:transparent}
+.top nav button.on{background:var(--sunk);border-color:var(--line)}
+.roleswitch{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2)}
+.roleswitch select{width:auto}
+main{max-width:1180px;margin:0 auto;padding:24px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0}
+h1{font-size:30px;line-height:1.2}
+h2{font-size:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 24px}
+.muted{color:var(--ink-2)}
+.small{font-size:13px}
+.tag{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:6px;background:var(--accent-soft);color:var(--accent)}
+.back{background:none;border:none;padding:0;color:var(--ink-2);margin-bottom:14px}
+/* project header */
+.phead{border-left:4px solid var(--risk);border-radius:0;display:grid;grid-template-columns:1fr auto;gap:12px}
+.phead.ok{border-left-color:var(--done)}
+.ptitle{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.risk{text-align:right}
+.risk b{font-family:var(--serif);font-size:44px;line-height:1;color:var(--risk);display:block}
+.ok .risk b{color:var(--done)}
+.meta{grid-column:1/-1;display:flex;gap:40px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+.meta div span{display:block;font-size:12px;color:var(--ink-3);letter-spacing:.03em}
+.meta div strong{font-weight:500}
+.bad{color:var(--risk)}
+.hold{background:var(--hold-soft);color:var(--hold);border-radius:var(--r);padding:12px 18px;margin-top:14px;font-size:14px}
+.sechead{display:flex;align-items:center;gap:12px;margin:26px 0 14px;flex-wrap:wrap}
+.sechead .right{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:999px;padding:3px;background:var(--card)}
+.seg button{border:none;padding:5px 14px;background:transparent;color:var(--ink-2)}
+.seg button.on{background:var(--ink);color:var(--card)}
+/* map */
+.mapgrid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+.mapwrap{overflow-x:auto;padding:8px 0}
+.mapcard{padding:12px 8px 8px}
+.mapcard.editing{outline:2px dashed var(--accent);outline-offset:-2px}
+svg text{font-family:var(--sans)}
+.stn{cursor:pointer}
+.editing .stn{cursor:grab}
+.signal{display:flex;gap:10px;align-items:flex-start;padding:12px 16px;border-radius:var(--r-sm);margin:0 8px 10px;font-size:14px}
+.signal.bad{background:var(--urgent-soft);color:var(--urgent)}
+.signal.good{background:var(--done-soft);color:var(--done)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;font-size:12px;color:var(--ink-2);padding:10px 12px 4px;border-top:1px solid var(--line);margin-top:6px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.panel h3{font-size:18px;margin-bottom:2px}
+.panel .row{display:flex;justify-content:space-between;gap:8px;font-size:14px;padding:6px 0;border-bottom:1px solid var(--line)}
+.panel .row span:first-child{color:var(--ink-2)}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px}
+.p-done{background:var(--done-soft);color:var(--done)} .p-now{background:var(--now-soft);color:var(--now)}
+.p-behind{background:var(--late-soft);color:var(--late)} .p-urgent{background:var(--urgent-soft);color:var(--urgent)}
+.p-todo{background:var(--sunk);color:var(--ink-2)}
+.subs{list-style:none;margin:6px 0 0;padding:0}
+.subs li{display:flex;align-items:center;gap:8px;padding:5px 0;font-size:14px}
+.subs input[type=checkbox]{width:16px;height:16px;accent-color:var(--done)}
+.subs .x{margin-left:auto;padding:0 6px;border:none;color:var(--ink-3);background:none}
+.dep{display:flex;align-items:center;gap:6px;font-size:14px;padding:4px 0}
+.warn{background:var(--urgent-soft);color:var(--urgent);font-size:13px;padding:8px 10px;border-radius:var(--r-sm);margin-top:10px}
+.err{color:var(--urgent);font-size:13px;margin-top:4px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;padding:6px 8px 12px}
+.toolbar .on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.hint{font-size:13px;color:var(--ink-2);padding:0 10px 8px}
+/* board */
+.board{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.col h4{margin:0 0 10px;font-size:13px;letter-spacing:.05em;color:var(--ink-2);font-weight:600}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;margin-bottom:10px;font-size:14px}
+.tcard .small{margin-top:6px}
+.empty{border:1px dashed var(--line-2);border-radius:var(--r);padding:20px;text-align:center;color:var(--ink-3);font-size:14px}
+/* list */
+.plist{display:flex;flex-direction:column;gap:10px}
+.prow{display:grid;grid-template-columns:minmax(0,1fr) 200px 170px;gap:16px;align-items:center;cursor:pointer}
+.prow:hover{border-color:var(--ink-3)}
+.minitrack{height:8px;border-radius:999px;background:var(--line);position:relative;overflow:hidden}
+.minitrack b{position:absolute;inset:0 auto 0 0;background:var(--done);border-radius:999px}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:16px}
+.choice{cursor:pointer}
+.choice.on{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+.emptymap{text-align:center;padding:50px 20px}
+.emptymap svg{width:120px;margin-bottom:10px}
+@media (max-width:860px){
+  .mapgrid{grid-template-columns:1fr}
+  .board{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .prow{grid-template-columns:1fr}
+  .top{flex-wrap:wrap;padding:10px 14px}
+  main{padding:16px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="logo" onclick="go('list')" tabindex="0">
+    <svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#F4EDE1"/><path d="M12 40h14l6-24 6 32 6-14 8-8" fill="none" stroke="#B9531F" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Pulse
+  </div>
+  <nav><button id="nav-list" onclick="go('list')">Projects</button><button id="nav-new" onclick="go('new')">New project</button></nav>
+  <div class="roleswitch">Viewing as
+    <select id="role" onchange="setRole(this.value)">
+      <option value="dave">Dave Mears, founder (builds maps)</option>
+      <option value="muiz">Muiz, developer (builds maps)</option>
+      <option value="jess">Jess, team member (sees maps)</option>
+    </select>
+  </div>
+</div>
+<main id="app"></main>
+<div class="toast" id="toast"></div>
+
+<script>
+var TODAY = d('2026-10-05');
+var ROLES = {
+  dave:{name:'Dave Mears', builder:true},
+  muiz:{name:'Muiz', builder:true},
+  jess:{name:'Jess', builder:false}
+};
+var PEOPLE = ['Dave','Muiz','Laura','Dennis','Jess'];
+var S = {role:'dave', screen:'list', pid:null, view:'map', edit:false, sel:null, draw:false, from:null, newMode:'template', err:''};
+
+var projects = [
+ {id:'ate', name:'Build "Ask the Experts" Tool for NLA', client:'NUCO LLC', stage:'Development', owner:'Muiz', onHold:'Sep 29',
+  delivers:'NLA clients asking the experts on its own domain', start:'2026-09-04T09:00', deadline:'2026-09-30',
+  tracks:[{id:'t1',name:'Build and launch'},{id:'t2',name:'Hosting'},{id:'t3',name:'Domain'},{id:'t4',name:'Knowledge base'}],
+  actions:[
+   {id:'a1',name:'Build the question tool',track:'t1',due:'2026-09-09',owner:'Muiz',priority:'high',done:true,subs:[{n:'Question form',d:true},{n:'Answer engine',d:true},{n:'NLA styling',d:true}],waits:[]},
+   {id:'a2',name:'Log every question asked',track:'t4',due:'2026-09-12',owner:'Muiz',priority:'high',done:true,subs:[{n:'Question log table',d:true}],waits:['a1']},
+   {id:'a3',name:'Move from Netlify to Vercel',track:'t2',due:'2026-09-11',owner:'Muiz',priority:'urgent',blocked:'Waiting on Dave for DNS records through Cloudflare',subs:[{n:'Deploy on Vercel',d:true},{n:'Point DNS at Vercel',d:false},{n:'Retire Netlify site',d:false}],waits:['a1']},
+   {id:'a4',name:'Confirm domain and add DNS records',track:'t3',due:'2026-09-11',owner:'Dave',priority:'high',subs:[{n:'Confirm the purchase',d:false}],waits:['a1']},
+   {id:'a5',name:'Seed the knowledge base',track:'t4',due:'2026-09-22',owner:'Laura',priority:'medium',subs:[{n:'Group the first 50 questions',d:false},{n:'Write model answers',d:false}],waits:['a2']},
+   {id:'a6',name:'Live on its own domain',track:'t1',due:'2026-09-25',owner:'Muiz',priority:'high',milestone:true,subs:[],waits:['a3','a4','a5']},
+   {id:'a7',name:'Announce to NLA clients',track:'t1',due:'2026-09-29',owner:'Dennis',priority:'medium',subs:[{n:'Email to client list',d:false}],waits:['a6']}
+  ]},
+ {id:'ebk', name:'CLIENT - Website Update/ Build - Ridgeline Bikes', client:'Ridgeline Bikes', stage:'Client work', owner:'Laura',
+  delivers:'New Ridgeline Bikes site live and selling online', start:'2026-09-28T10:00', deadline:'2026-10-30',
+  tracks:[{id:'e1',name:'Content'},{id:'e2',name:'Design'},{id:'e3',name:'Build and launch'}],
+  actions:[
+   {id:'b1',name:'Collect product photos',track:'e1',due:'2026-10-01',owner:'Jess',priority:'medium',done:true,subs:[{n:'Shoot the bike range',d:true}],waits:[]},
+   {id:'b2',name:'Write page copy',track:'e1',due:'2026-10-08',owner:'Jess',priority:'medium',doing:true,subs:[{n:'Home page',d:true},{n:'Rentals',d:true},{n:'Tours',d:false},{n:'About',d:false}],waits:['b1']},
+   {id:'b3',name:'Home page design',track:'e2',due:'2026-10-03',owner:'Laura',priority:'medium',done:true,subs:[],waits:[]},
+   {id:'b4',name:'Product page design',track:'e2',due:'2026-10-09',owner:'Laura',priority:'medium',doing:true,subs:[{n:'Bike detail layout',d:true},{n:'Booking button',d:false}],waits:['b3']},
+   {id:'b5',name:'Build the pages',track:'e3',due:'2026-10-20',owner:'Muiz',priority:'high',subs:[{n:'Home',d:false},{n:'Rentals',d:false},{n:'Checkout',d:false}],waits:['b2','b4']},
+   {id:'b6',name:'Client review',track:'e3',due:'2026-10-26',owner:'Laura',priority:'high',subs:[],waits:['b5']},
+   {id:'b7',name:'Launch',track:'e3',due:'2026-10-29',owner:'Muiz',priority:'high',milestone:true,subs:[],waits:['b6']}
+  ]},
+ {id:'hd', name:'CLIENT - HD - Website Build', client:'Harbor Dental', stage:'Client work', owner:'Dave',
+  delivers:'', start:'2026-08-20T09:00', deadline:'2026-09-11', tracks:[], actions:[], healthText:'20% done'}
+];
+
+var TEMPLATES = [
+ {id:'web', name:'Client website build', note:'3 tracks, 7 actions, 30 days', from:'ebk'},
+ {id:'score', name:'NLA Scoreboard setup', note:'2 tracks, 5 actions, 14 days', from:null},
+ {id:'social', name:'Monthly social media management', note:'2 tracks, 6 actions, 30 days', from:null}
+];
+
+/* ---------- helpers ---------- */
+function d(s){var p=s.slice(0,10).split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+function iso(dt){return dt.getFullYear()+'-'+String(dt.getMonth()+1).padStart(2,'0')+'-'+String(dt.getDate()).padStart(2,'0');}
+function days(a,b){return Math.round((b-a)/864e5);}
+function addDays(dt,n){var x=new Date(dt);x.setDate(x.getDate()+n);return x;}
+var MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+function fmt(dt){return MON[dt.getMonth()]+' '+dt.getDate();}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function P(){return projects.find(function(p){return p.id===S.pid;});}
+function A(p,id){return p.actions.find(function(a){return a.id===id;});}
+function builder(){return ROLES[S.role].builder;}
+function status(a){
+  if(a.done) return 'done';
+  if(a.blocked||a.priority==='urgent') return 'urgent';
+  if(d(a.due)<TODAY) return 'behind';
+  if(a.doing) return 'now';
+  return 'todo';
+}
+var SLABEL={done:'Done',urgent:'Urgent or blocking',behind:'Behind',now:'Being worked on',todo:'Not started'};
+var SCOL={done:'var(--done)',urgent:'var(--urgent)',behind:'var(--late)',now:'var(--now)',todo:'var(--todo)'};
+function front(p){
+  var open=p.actions.filter(function(a){return !a.done;}).sort(function(a,b){return d(a.due)-d(b.due);});
+  return open.length?d(open[0].due):null;
+}
+function behindDays(p){var f=front(p);if(!f)return 0;return Math.max(0,days(f,TODAY));}
+function pct(p){if(!p.actions.length)return 0;return Math.round(100*p.actions.filter(function(a){return a.done;}).length/p.actions.length);}
+function conflicts(p,a){return a.waits.map(function(w){return A(p,w);}).filter(function(w){return w&&d(w.due)>d(a.due);});}
+function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(toast.t);toast.t=setTimeout(function(){el.classList.remove('show');},1800);}
+
+/* ---------- navigation ---------- */
+function go(screen,pid){S.screen=screen;if(pid)S.pid=pid;S.edit=false;S.sel=null;S.draw=false;S.from=null;S.err='';if(screen==='project')S.view='map';render();window.scrollTo(0,0);}
+function setRole(r){S.role=r;S.edit=false;S.draw=false;if(!builder())S.newMode='template';render();toast('Now viewing as '+ROLES[r].name);}
+
+function render(){
+  document.getElementById('nav-list').className=S.screen==='list'?'on':'';
+  document.getElementById('nav-new').className=S.screen==='new'?'on':'';
+  var app=document.getElementById('app');
+  if(S.screen==='list') app.innerHTML=listScreen();
+  else if(S.screen==='new') app.innerHTML=newScreen();
+  else { app.innerHTML=projectScreen(); if(S.view==='map'&&(P().actions.length||S.edit)) drawMap(); }
+}
+
+/* ---------- projects list ---------- */
+function listScreen(){
+  var h='<div class="sechead" style="margin-top:0"><h1>Your projects</h1><div class="right"><button class="primary" onclick="go(\'new\')">New project</button></div></div><div class="plist">';
+  projects.forEach(function(p){
+    var b=behindDays(p), sig;
+    if(!p.actions.length) sig='<span class="pill p-todo">No map yet</span>';
+    else if(b>0) sig='<span class="pill p-urgent">'+b+' days behind plan</span>';
+    else sig='<span class="pill p-done">On track</span>';
+    h+='<div class="card prow" tabindex="0" onclick="go(\'project\',\''+p.id+'\')"><div><strong>'+esc(p.name)+'</strong><div class="small muted">'+esc(p.client)+(p.onHold?', on hold':'')+'</div></div>'+
+      '<div><div class="minitrack"><b style="width:'+pct(p)+'%"></b></div><div class="small muted" style="margin-top:4px">'+(p.actions.length?pct(p)+'% of actions done':'Nothing mapped')+'</div></div>'+
+      '<div style="text-align:right">'+sig+'<div class="small muted">Due '+fmt(d(p.deadline))+'</div></div></div>';
+  });
+  return h+'</div>';
+}
+
+/* ---------- new project ---------- */
+function newScreen(){
+  var b=builder();
+  var h='<button class="back" onclick="go(\'list\')">&lsaquo; All projects</button><h1>New project</h1>';
+  h+='<p class="muted" style="max-width:620px">'+(b?'Draw it on the map, or start from one of the templates. Templates arrive already mapped, so you only adjust dates.':'Start from one of the templates. They arrive already mapped. Drawing new maps is for founders, admins, agents, PMs and developers.')+'</p>';
+  h+='<div class="choices">';
+  if(b) h+='<div class="card choice '+(S.newMode==='draw'?'on':'')+'" onclick="S.newMode=\'draw\';render()"><h3>Draw it on the map</h3><p class="small muted">Set the start and the deadline, then lay out the actions, tracks and what waits on what.</p></div>';
+  h+='<div class="card choice '+(S.newMode==='template'?'on':'')+'" onclick="S.newMode=\'template\';render()"><h3>Start from a template</h3><p class="small muted">Pick a template we provide. Its map is drawn for you and dated from your start.</p></div></div>';
+  h+='<div class="card" style="margin-top:16px;max-width:620px">';
+  if(S.newMode==='draw'&&b){
+    h+='<label for="nn">Project name</label><input id="nn" placeholder="CLIENT - Coastline Yoga - Website Development">'+
+       '<label for="nc">Client</label><input id="nc" placeholder="Coastline Yoga">'+
+       '<label for="nd">What this delivers</label><input id="nd" placeholder="New site live with online booking">'+
+       '<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px"><div><label for="ns">Starts</label><input id="ns" type="date" value="2026-10-06"></div><div><label for="nt">At</label><input id="nt" type="time" value="09:00"></div><div><label for="ne">Deadline</label><input id="ne" type="date" value="2026-11-06"></div></div>'+
+       (S.err?'<div class="err">'+S.err+'</div>':'')+
+       '<div style="margin-top:16px"><button class="primary" onclick="createDrawn()">Open the map builder</button></div>';
+  } else {
+    h+='<label for="tt">Template</label><select id="tt">'+TEMPLATES.map(function(t){return '<option value="'+t.id+'">'+t.name+', '+t.note+'</option>';}).join('')+'</select>'+
+       '<label for="tc">Client</label><input id="tc" placeholder="Coastline Yoga">'+
+       '<label for="ts">Starts</label><input id="ts" type="date" value="2026-10-06">'+
+       (S.err?'<div class="err">'+S.err+'</div>':'')+
+       '<div style="margin-top:16px"><button class="primary" onclick="createFromTemplate()">Create project</button></div>';
+  }
+  return h+'</div>';
+}
+function createDrawn(){
+  var n=document.getElementById('nn').value.trim(), c=document.getElementById('nc').value.trim(), dl=document.getElementById('nd').value.trim();
+  var s=document.getElementById('ns').value, t=document.getElementById('nt').value, e=document.getElementById('ne').value;
+  if(!n||!c||!dl){S.err='Add a name, a client and what it delivers.';render();return;}
+  if(!s||!e||d(e)<=d(s)){S.err='Set a deadline after the start date.';render();return;}
+  var id='p'+Date.now();
+  projects.unshift({id:id,name:n,client:c,stage:'Planning',owner:ROLES[S.role].name.split(' ')[0],delivers:dl,start:s+'T'+(t||'09:00'),deadline:e,tracks:[{id:id+'t',name:'Main track'}],actions:[]});
+  S.pid=id;S.screen='project';S.view='map';S.edit=true;S.sel='start';S.err='';render();toast('Project created. Add your first action.');
+}
+function createFromTemplate(){
+  var tid=document.getElementById('tt').value, c=document.getElementById('tc').value.trim(), s=document.getElementById('ts').value;
+  if(!c){S.err='Add the client this is for.';render();return;}
+  var tpl=TEMPLATES.find(function(t){return t.id===tid;});
+  var src=projects.find(function(p){return p.id===(tpl.from||'ebk');});
+  var shift=days(d(src.start),d(s||'2026-10-06')), id='p'+Date.now();
+  var np={id:id,name:'CLIENT - '+c+' - '+tpl.name,client:c,stage:'Client work',owner:ROLES[S.role].name.split(' ')[0],delivers:src.delivers.replace('Ridgeline Bikes',c),
+    start:iso(addDays(d(src.start),shift))+'T09:00',deadline:iso(addDays(d(src.deadline),shift)),tracks:JSON.parse(JSON.stringify(src.tracks)),
+    actions:src.actions.map(function(a){var x=JSON.parse(JSON.stringify(a));x.done=false;x.doing=false;x.due=iso(addDays(d(a.due),shift));x.subs.forEach(function(q){q.d=false;});return x;})};
+  projects.unshift(np);S.pid=id;S.screen='project';S.view='map';S.err='';render();toast('Created from the '+tpl.name+' template');
+}
+
+/* ---------- project screen ---------- */
+function projectScreen(){
+  var p=P(), b=behindDays(p), ok=p.actions.length&&b===0;
+  var risk=!p.actions.length?65:Math.min(99,10+b*3);
+  var blocked=p.actions.filter(function(a){return a.blocked;}).length;
+  var h='<button class="back" onclick="go(\'list\')">&lsaquo; All projects</button>';
+  h+='<div class="card phead '+(ok?'ok':'')+'"><div><div class="ptitle"><span class="tag">'+esc(p.stage)+'</span><h1>'+esc(p.name)+'</h1></div>'+
+     '<div class="muted" style="margin-top:4px">'+esc(p.client)+', started '+fmt(d(p.start))+'</div></div>'+
+     '<div class="risk"><b'+(ok?' style="font-size:26px"':'')+'>'+(ok?'On track':risk)+'</b><span class="small muted">'+(ok?'':'Risk score')+'</span></div>'+
+     '<div class="meta"><div><span>Deadline</span><strong class="'+(d(p.deadline)<TODAY?'bad':'')+'">'+fmt(d(p.deadline))+(d(p.deadline)<TODAY?', '+days(d(p.deadline),TODAY)+' days ago':'')+'</strong></div>'+
+     '<div><span>Progress</span><strong class="'+(b>0?'bad':'')+'">'+pct(p)+'%'+(b>0?', behind':'')+'</strong></div>'+
+     '<div><span>Owner</span><strong>'+esc(p.owner)+'</strong></div>'+
+     '<div><span>Blocked</span><strong class="'+(blocked?'bad':'')+'">'+blocked+' action'+(blocked===1?'':'s')+'</strong></div>'+
+     '<div><span>Delivers</span><strong>'+(p.delivers?esc(p.delivers):'<span class="muted">Not set</span>')+'</strong></div></div></div>';
+  if(p.onHold) h+='<div class="hold"><strong>On hold since '+p.onHold+'.</strong> Its open actions are paused with it. The map still shows where it stopped.</div>';
+  var title=S.view==='map'?(S.edit?'Map builder':'Project map'):'Task board';
+  h+='<div class="sechead"><h2>'+title+'</h2><div class="right">';
+  if(S.view==='map'&&builder()&&(p.actions.length||S.edit)){
+    h+=S.edit?'<button class="primary" onclick="saveMap()">Done editing</button>':'<button onclick="startEdit()">Edit map</button>';
+  }
+  h+='<div class="seg" role="group" aria-label="Switch view"><button class="'+(S.view==='board'?'on':'')+'" onclick="setView(\'board\')">Board</button><button class="'+(S.view==='map'?'on':'')+'" onclick="setView(\'map\')">Map</button></div></div></div>';
+  if(S.view==='board') h+=boardView(p);
+  else if(!p.actions.length&&!S.edit) h+=emptyMap(p);
+  else h+=mapShell(p);
+  return h;
+}
+function setView(v){S.view=v;S.edit=false;S.draw=false;S.sel=null;render();}
+function startEdit(){S.edit=true;S.sel=null;render();}
+function saveMap(){S.edit=false;S.draw=false;S.from=null;S.sel=null;render();toast('Map saved');}
+
+function emptyMap(p){
+  var h='<div class="card emptymap"><svg viewBox="0 0 120 50"><path d="M10 25 C40 25 40 10 60 10 S90 25 110 25" fill="none" stroke="var(--line-2)" stroke-width="4" stroke-dasharray="6 6"/><circle cx="10" cy="25" r="6" fill="var(--todo)"/><circle cx="110" cy="25" r="9" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="2"/></svg>';
+  h+='<h3>This project has no map yet</h3><p class="muted" style="max-width:460px;margin:8px auto 18px">It\'s '+days(d(p.deadline),TODAY)+' days past its deadline with nothing laid out, so nobody can see what\'s left or what\'s stuck.</p>';
+  h+=builder()?'<button class="primary" onclick="S.edit=true;S.sel=\'end\';if(!P().tracks.length)P().tracks.push({id:\'w1\',name:\'Main track\'});render()">Draw the map</button>':'<p class="small muted">'+esc(p.owner)+' owns this project and can draw its map.</p>';
+  return h+'</div>';
+}
+
+function boardView(p){
+  var cols={'To do':[],'In progress':[],'Needs a word':[],'Done':[]};
+  p.actions.forEach(function(a){var s=status(a);if(a.done)cols['Done'].push(a);else if(a.blocked)cols['Needs a word'].push(a);else if(a.doing)cols['In progress'].push(a);else cols['To do'].push(a);});
+  var h='<div class="board">';
+  Object.keys(cols).forEach(function(k){
+    h+='<div class="col"><h4>'+k+' '+cols[k].length+'</h4>';
+    if(!cols[k].length) h+='<div class="empty">Nothing here</div>';
+    cols[k].forEach(function(a){var s=status(a);h+='<div class="tcard">'+esc(a.name)+'<div class="small muted">'+esc(a.owner)+', '+fmt(d(a.due))+' <span class="pill p-'+(s==='now'?'now':s)+'">'+SLABEL[s]+'</span></div></div>';});
+    h+='</div>';
+  });
+  return h+'</div>';
+}
+
+function mapShell(p){
+  var b=behindDays(p), sig='';
+  if(!S.edit&&p.actions.length){
+    var stuck=p.actions.filter(function(a){return a.blocked;});
+    if(b>0) sig='<div class="signal bad"><strong>'+b+' days behind plan.</strong>&nbsp;'+(stuck.length?'Held up by "'+esc(stuck[0].name)+'": '+esc(stuck[0].blocked)+'.':'The earliest open action was due '+fmt(front(p))+'.')+'</div>';
+    else sig='<div class="signal good"><strong>On track.</strong>&nbsp;Work is where the plan says it should be today.</div>';
+  }
+  var tb='';
+  if(S.edit){
+    tb='<div class="toolbar"><button onclick="addAction()">Add action</button><button onclick="addTrack()">Add track</button><button class="'+(S.draw?'on':'')+'" onclick="toggleDraw()">'+(S.draw?'Drawing a line':'Draw a line')+'</button></div>'+
+       '<div class="hint">'+(S.draw?(S.from?'Now click the action that has to wait for it.':'Click the action that has to happen first.'):'Drag an action left or right to change its date. Click the start, an action, or the finish to edit it.')+'</div>';
+  }
+  return '<div class="mapgrid"><div class="card mapcard '+(S.edit?'editing':'')+'">'+sig+tb+'<div class="mapwrap" id="mapwrap"></div>'+
+    '<div class="legend"><span><i style="background:var(--done)"></i>Done</span><span><i style="background:var(--now)"></i>Being worked on</span><span><i style="background:var(--late)"></i>Behind</span><span><i style="background:var(--urgent)"></i>Urgent or blocking</span><span><i style="background:var(--todo)"></i>Not started</span><span><i style="background:var(--band);border:1px solid var(--late)"></i>Gap behind plan</span></div></div>'+
+    '<div class="card panel" id="panel">'+panel(p)+'</div></div>';
+}
+
+/* ---------- the map ---------- */
+var SC={};
+function drawMap(){
+  var p=P(), wrap=document.getElementById('mapwrap'); if(!wrap) return;
+  var W=Math.max(wrap.clientWidth-4,760), padL=150, padR=70, laneH=96, top=64;
+  var start=d(p.start), dl=d(p.deadline);
+  var endD=addDays(dl>TODAY?dl:TODAY,3);
+  p.actions.forEach(function(a){if(d(a.due)>endD)endD=addDays(d(a.due),3);});
+  var span=Math.max(1,days(start,endD));
+  function x(dt){return padL+(days(start,dt)/span)*(W-padL-padR);}
+  SC={x0:padL,w:W-padL-padR,span:span,start:start};
+  var lanes=p.tracks.length||1, H=top+lanes*laneH+20;
+  function ly(i){return top+laneH/2+i*laneH;}
+  var yc=top+(lanes*laneH)/2;
+  var s='<svg width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Project map from start to finish"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--ink-3)"/></marker><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--urgent)"/></marker></defs>';
+  // week ticks
+  for(var t=new Date(start);t<=endD;t=addDays(t,7)){var tx=x(t);s+='<line x1="'+tx+'" y1="'+(top-14)+'" x2="'+tx+'" y2="'+(H-14)+'" stroke="var(--line)" stroke-width="1"/><text x="'+tx+'" y="'+(top-20)+'" font-size="11" fill="var(--ink-3)" text-anchor="middle">'+fmt(t)+'</text>';}
+  // lanes
+  p.tracks.forEach(function(tr,i){s+='<text x="14" y="'+(ly(i)+4)+'" font-size="12" font-weight="600" fill="var(--ink-2)">'+esc(tr.name)+'</text>';});
+  // behind band
+  var f=front(p);
+  if(f&&f<TODAY&&!S.edit){var bx=Math.max(x(f),padL);s+='<rect x="'+bx+'" y="'+(top-8)+'" width="'+(x(TODAY)-bx)+'" height="'+(lanes*laneH+8)+'" fill="var(--band)"/><text x="'+((bx+x(TODAY))/2)+'" y="'+(H-2)+'" font-size="12" font-weight="600" fill="var(--late)" text-anchor="middle">'+days(f,TODAY)+' days behind plan</text>';}
+  // deadline + today
+  s+='<line x1="'+x(dl)+'" y1="'+(top-8)+'" x2="'+x(dl)+'" y2="'+(H-14)+'" stroke="var(--ink-2)" stroke-width="1.5" stroke-dasharray="3 4"/><text x="'+x(dl)+'" y="14" font-size="12" font-weight="600" fill="var(--ink-2)" text-anchor="middle">Deadline '+fmt(dl)+'</text>';
+  if(TODAY>=start){s+='<line x1="'+x(TODAY)+'" y1="'+(top-8)+'" x2="'+x(TODAY)+'" y2="'+(H-14)+'" stroke="var(--urgent)" stroke-width="1.5" stroke-dasharray="3 4"/><text x="'+x(TODAY)+'" y="'+(Math.abs(x(TODAY)-x(dl))<70?30:14)+'" font-size="12" font-weight="600" fill="var(--urgent)" text-anchor="middle">Today '+fmt(TODAY)+'</text>';}
+  // track lines
+  function curve(x1,y1,x2,y2){var m=(x1+x2)/2;return 'M'+x1+' '+y1+' C'+m+' '+y1+' '+m+' '+y2+' '+x2+' '+y2;}
+  var xs=padL, xe=x(dl), endX=pts_end(p,x,xe);
+  p.tracks.forEach(function(tr,i){
+    var acts=p.actions.filter(function(a){return a.track===tr.id;}).sort(function(a,b){return d(a.due)-d(b.due);});
+    var pts=[{x:xs,y:yc}].concat(acts.map(function(a){return {x:x(d(a.due)),y:ly(i),a:a};})).concat([{x:endX,y:yc,end:true}]);
+    var allPrevDone=true;
+    for(var k=0;k<pts.length-1;k++){
+      var nxt=pts[k+1], solid=allPrevDone&&nxt.a&&nxt.a.done;
+      if(!(nxt.a&&nxt.a.done)) allPrevDone=false;
+      var col=solid?'var(--done)':(nxt.a?SCOL[status(nxt.a)]:'var(--todo)');
+      s+='<path d="'+curve(pts[k].x,pts[k].y,nxt.x,nxt.y)+'" fill="none" stroke="'+(solid?'var(--done)':'var(--line-2)')+'" stroke-width="'+(solid?6:4)+'" '+(solid?'':'stroke-dasharray="7 6"')+' stroke-linecap="round"/>';
+    }
+  });
+  // cross-track dependency lines
+  p.actions.forEach(function(a){
+    var ai=p.tracks.findIndex(function(t){return t.id===a.track;});
+    a.waits.forEach(function(wid){var w=A(p,wid);if(!w)return;var wi=p.tracks.findIndex(function(t){return t.id===w.track;});
+      var bad=d(w.due)>d(a.due);
+      if(wi===ai&&!bad) return;
+      var x1=x(d(w.due))+12,y1=ly(wi),x2=x(d(a.due))-14,y2=ly(ai);
+      s+='<path d="'+curve(x1,y1,x2,y2)+'" fill="none" stroke="'+(bad?'var(--urgent)':'var(--ink-3)')+'" stroke-width="1.5" stroke-dasharray="'+(bad?'4 3':'2 4')+'" marker-end="url(#'+(bad?'arr':'ar')+')"/>';
+    });
+  });
+  // start + end
+  s+='<g class="stn" data-node="start"><circle cx="'+xs+'" cy="'+yc+'" r="'+(S.sel==='start'?13:10)+'" fill="var(--ink)"/><text x="'+(xs-16)+'" y="'+(yc+4)+'" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="end">Start</text><text x="'+(xs-16)+'" y="'+(yc+19)+'" font-size="11" fill="var(--ink-3)" text-anchor="end">'+fmt(start)+', '+p.start.slice(11,16)+'</text></g>';
+  s+='<g class="stn" data-node="end"><circle cx="'+endX+'" cy="'+yc+'" r="'+(S.sel==='end'?24:21)+'" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="3"/><path d="M'+(endX-5)+' '+(yc+8)+'V'+(yc-9)+'l11 4-11 4" fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round"/>'+
+     '<text x="'+endX+'" y="'+(yc+40)+'" font-size="12" font-weight="600" fill="var(--accent)" text-anchor="middle">The result</text></g>';
+  // stations
+  p.tracks.forEach(function(tr,i){
+    var acts=p.actions.filter(function(a){return a.track===tr.id;}).sort(function(a,b){return d(a.due)-d(b.due);});
+    acts.forEach(function(a,k){
+      var st=status(a), cx=x(d(a.due)), cy=ly(i), r=a.milestone?14:12, sel=S.sel===a.id, from=S.from===a.id;
+      var above=k%2===1, ty=above?cy-24:cy+30;
+      var g='<g class="stn" data-id="'+a.id+'" tabindex="0">';
+      if(st==='now') g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(r+7)+'" fill="none" stroke="var(--now)" stroke-opacity=".35" stroke-width="4"/>';
+      if(sel||from) g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+(r+6)+'" fill="none" stroke="var(--accent)" stroke-width="2"/>';
+      if(st==='done') g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="var(--done)"/><path d="M'+(cx-5)+' '+cy+'l3.5 3.5 6.5-7" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>';
+      else if(st==='todo') g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="var(--card)" stroke="var(--todo)" stroke-width="3"/>';
+      else if(st==='urgent') g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="var(--card)" stroke="var(--urgent)" stroke-width="5"/><text x="'+cx+'" y="'+(cy+4)+'" font-size="12" font-weight="700" fill="var(--urgent)" text-anchor="middle">!</text>';
+      else g+='<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+SCOL[st]+'"/>';
+      if(a.milestone) g+='<rect x="'+(cx-4)+'" y="'+(cy-4)+'" width="8" height="8" fill="var(--card)" transform="rotate(45 '+cx+' '+cy+')"/>';
+      var nm=a.name.length>24?a.name.slice(0,23)+'…':a.name;
+      g+='<text x="'+cx+'" y="'+ty+'" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="middle">'+esc(nm)+'</text>';
+      if(!above) g+='<text x="'+cx+'" y="'+(ty+15)+'" font-size="11" fill="'+(st==='behind'||st==='urgent'?SCOL[st]:'var(--ink-3)')+'" text-anchor="middle">'+fmt(d(a.due))+(st==='behind'?', '+days(d(a.due),TODAY)+'d late':'')+'</text>';
+      else g+='<text x="'+cx+'" y="'+(ty-15)+'" font-size="11" fill="'+(st==='behind'||st==='urgent'?SCOL[st]:'var(--ink-3)')+'" text-anchor="middle">'+fmt(d(a.due))+(st==='behind'?', '+days(d(a.due),TODAY)+'d late':'')+'</text>';
+      s+=g+'</g>';
+    });
+  });
+  s+='</svg>';
+  wrap.innerHTML=s;
+  bindMap();
+}
+function pts_end(p,x,xe){var m=xe;p.actions.forEach(function(a){m=Math.max(m,x(d(a.due))+30);});return m;}
+
+function bindMap(){
+  var p=P();
+  document.querySelectorAll('#mapwrap .stn').forEach(function(g){
+    var id=g.getAttribute('data-id'), node=g.getAttribute('data-node');
+    var sx=0, moved=false, down=false;
+    g.addEventListener('pointerdown',function(e){
+      if(!S.edit||!id||S.draw){return;}
+      down=true;moved=false;sx=e.clientX;g.setPointerCapture(e.pointerId);
+    });
+    g.addEventListener('pointermove',function(e){
+      if(!down) return;
+      var dx=e.clientX-sx; if(Math.abs(dx)>4) moved=true;
+      if(moved){g.setAttribute('transform','translate('+dx+' 0)');}
+    });
+    g.addEventListener('pointerup',function(e){
+      if(down&&moved){
+        var a=A(p,id), dx=e.clientX-sx, shift=Math.round(dx/SC.w*SC.span);
+        var nd=addDays(d(a.due),shift); if(nd<SC.start) nd=SC.start;
+        a.due=iso(nd); S.sel=id; down=false; refresh(); toast('Moved to '+fmt(nd)); return;
+      }
+      down=false; clickNode(id,node);
+    });
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();clickNode(id,node);}});
+  });
+}
+function clickNode(id,node){
+  var p=P();
+  if(S.draw&&id){
+    if(!S.from){S.from=id;refresh();return;}
+    if(S.from===id){S.from=null;refresh();return;}
+    var a=A(p,id); if(a.waits.indexOf(S.from)<0) a.waits.push(S.from);
+    var f=A(p,S.from); S.from=null; S.sel=id; refresh(); toast('"'+a.name+'" now waits on "'+f.name+'"'); return;
+  }
+  S.sel=id||node; refresh();
+}
+function refresh(){var keep=document.querySelector('.mapwrap')?document.querySelector('.mapwrap').scrollLeft:0;render();var w=document.querySelector('.mapwrap');if(w)w.scrollLeft=keep;}
+
+/* ---------- side panel ---------- */
+function panel(p){
+  var ed=S.edit;
+  if(!S.sel){
+    var counts={};p.actions.forEach(function(a){var s=status(a);counts[s]=(counts[s]||0)+1;});
+    var h='<h3>'+(ed?'Building the map':'How to read it')+'</h3>';
+    if(ed){h+='<p class="small muted">Every action sits on its due date, counted back from the deadline on '+fmt(d(p.deadline))+'. Lines between tracks show what has to happen first. Click any action to edit it.</p><label>Tracks</label>';p.tracks.forEach(function(t){h+='<input style="margin-bottom:6px" aria-label="Track name" value="'+esc(t.name)+'" onchange="if(this.value.trim()){P().tracks.find(function(x){return x.id===\''+t.id+'\'}).name=this.value.trim();refresh()}">';});return h;}
+    h+='<p class="small muted">The line runs from the start to the result this project delivers. Parallel tracks are work happening at the same time, and they join where everything has to be ready.</p>';
+    ['urgent','behind','now','todo','done'].forEach(function(k){if(counts[k])h+='<div class="row"><span>'+SLABEL[k]+'</span><span class="pill p-'+k+'">'+counts[k]+'</span></div>';});
+    return h+'<p class="small muted" style="margin-top:12px">Click any stop on the map to see its subtasks and what it waits on.</p>';
+  }
+  if(S.sel==='start'){
+    if(!ed) return '<h3>Start</h3><div class="row"><span>Kicked off</span><span>'+fmt(d(p.start))+', '+p.start.slice(11,16)+'</span></div><div class="row"><span>Owner</span><span>'+esc(p.owner)+'</span></div>';
+    return '<h3>Start</h3><label for="sd">Start date</label><input id="sd" type="date" value="'+p.start.slice(0,10)+'" onchange="setStart()"><label for="st">Start time</label><input id="st" type="time" value="'+p.start.slice(11,16)+'" onchange="setStart()">';
+  }
+  if(S.sel==='end'){
+    if(!ed) return '<h3>The result</h3><p>'+(p.delivers?esc(p.delivers):'<span class="muted">Not set yet</span>')+'</p><div class="row"><span>Deadline</span><span>'+fmt(d(p.deadline))+'</span></div><div class="row"><span>Actions left</span><span>'+p.actions.filter(function(a){return !a.done;}).length+'</span></div>';
+    return '<h3>The result</h3><label for="ed">What this delivers</label><input id="ed" value="'+esc(p.delivers)+'" placeholder="New site live and selling online" onchange="P().delivers=this.value;refresh()"><label for="edl">Deadline</label><input id="edl" type="date" value="'+p.deadline+'" onchange="setDeadline(this.value)">'+(S.err?'<div class="err">'+S.err+'</div>':'');
+  }
+  var a=A(p,S.sel); if(!a){S.sel=null;return panel(p);}
+  var st=status(a), dl=d(p.deadline), before=days(d(a.due),dl), con=conflicts(p,a);
+  var when=before>=0?before+' days before the deadline':Math.abs(before)+' days after the deadline';
+  var h='';
+  if(!ed){
+    h+='<span class="pill p-'+st+'">'+SLABEL[st]+'</span><h3 style="margin-top:8px">'+esc(a.name)+'</h3>';
+    if(a.blocked) h+='<div class="warn">'+esc(a.blocked)+'</div>';
+    h+='<div class="row" style="margin-top:10px"><span>Due</span><span>'+fmt(d(a.due))+'</span></div><div class="row"><span>Timing</span><span>'+when+'</span></div><div class="row"><span>Owner</span><span>'+esc(a.owner)+'</span></div><div class="row"><span>Track</span><span>'+esc(p.tracks.find(function(t){return t.id===a.track;}).name)+'</span></div>';
+  } else {
+    h+='<h3>Action</h3><label for="an">Name</label><input id="an" value="'+esc(a.name)+'" onchange="if(this.value.trim()){A(P(),\''+a.id+'\').name=this.value.trim();refresh()}">'+
+      '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label for="ad">Due</label><input id="ad" type="date" value="'+a.due+'" onchange="A(P(),\''+a.id+'\').due=this.value;refresh()"></div>'+
+      '<div><label for="ao">Owner</label><select id="ao" onchange="A(P(),\''+a.id+'\').owner=this.value">'+PEOPLE.map(function(n){return '<option'+(n===a.owner?' selected':'')+'>'+n+'</option>';}).join('')+'</select></div></div>'+
+      '<p class="small muted" style="margin:6px 0 0">'+when+'</p>'+
+      '<label for="atr">Track</label><select id="atr" onchange="A(P(),\''+a.id+'\').track=this.value;refresh()">'+p.tracks.map(function(t){return '<option value="'+t.id+'"'+(t.id===a.track?' selected':'')+'>'+esc(t.name)+'</option>';}).join('')+'</select>'+
+      '<label for="ap">Priority</label><select id="ap" onchange="A(P(),\''+a.id+'\').priority=this.value;refresh()">'+['low','medium','high','urgent'].map(function(v){return '<option'+(v===a.priority?' selected':'')+'>'+v+'</option>';}).join('')+'</select>';
+  }
+  if(con.length) h+='<div class="warn">This is due before '+con.map(function(c){return '"'+esc(c.name)+'"';}).join(' and ')+', which it waits on. Move one of them.</div>';
+  var dn=a.subs.filter(function(q){return q.d;}).length;
+  h+='<label>Subtasks '+(a.subs.length?dn+' of '+a.subs.length:'')+'</label><ul class="subs">';
+  a.subs.forEach(function(q,i){h+='<li><input type="checkbox" id="sq'+i+'" '+(q.d?'checked':'')+' onchange="toggleSub(\''+a.id+'\','+i+')"><label for="sq'+i+'" style="margin:0;color:var(--ink);font-size:14px">'+esc(q.n)+'</label>'+(ed?'<button class="x" aria-label="Remove subtask" onclick="rmSub(\''+a.id+'\','+i+')">×</button>':'')+'</li>';});
+  if(!a.subs.length&&!ed) h+='<li class="muted">None</li>';
+  h+='</ul>';
+  if(ed) h+='<div style="display:flex;gap:6px;margin-top:4px"><input id="nsub" placeholder="Add a subtask" onkeydown="if(event.key===\'Enter\')addSub(\''+a.id+'\')"><button onclick="addSub(\''+a.id+'\')">Add</button></div>';
+  h+='<label>Waits on</label>';
+  if(!a.waits.length) h+='<div class="small muted">Nothing, it can start any time.</div>';
+  a.waits.forEach(function(w){var x=A(p,w);if(!x)return;h+='<div class="dep"><span class="pill p-'+status(x)+'" style="min-width:10px">&nbsp;</span>'+esc(x.name)+(ed?'<button class="quiet" style="margin-left:auto;padding:2px 8px" onclick="rmWait(\''+a.id+'\',\''+w+'\')">Remove</button>':'')+'</div>';});
+  if(ed) h+='<div style="margin-top:18px;display:flex;gap:8px"><button onclick="S.sel=null;refresh()">Close</button><button class="quiet" style="color:var(--urgent)" onclick="delAction(\''+a.id+'\')">Delete action</button></div>';
+  return h;
+}
+function toggleSub(id,i){var a=A(P(),id);a.subs[i].d=!a.subs[i].d;refresh();}
+function addSub(id){var v=document.getElementById('nsub').value.trim();if(!v)return;A(P(),id).subs.push({n:v,d:false});refresh();setTimeout(function(){var e=document.getElementById('nsub');if(e)e.focus();},0);}
+function rmSub(id,i){A(P(),id).subs.splice(i,1);refresh();}
+function rmWait(id,w){var a=A(P(),id);a.waits=a.waits.filter(function(x){return x!==w;});refresh();}
+function delAction(id){var p=P();p.actions=p.actions.filter(function(a){return a.id!==id;});p.actions.forEach(function(a){a.waits=a.waits.filter(function(w){return w!==id;});});S.sel=null;refresh();toast('Action deleted');}
+function setStart(){var p=P();p.start=document.getElementById('sd').value+'T'+(document.getElementById('st').value||'09:00');refresh();}
+function setDeadline(v){var p=P();if(!v||d(v)<=d(p.start)){S.err='Set a deadline after the start.';refresh();return;}S.err='';p.deadline=v;refresh();}
+function addAction(){
+  var p=P(); if(!p.tracks.length) p.tracks.push({id:'tr'+Date.now(),name:'Main track'});
+  var tr=(S.sel&&A(p,S.sel))?A(p,S.sel).track:p.tracks[0].id;
+  var mid=addDays(d(p.start),Math.round(days(d(p.start),d(p.deadline))/2));
+  var id='n'+Date.now(); p.actions.push({id:id,name:'New action',track:tr,due:iso(mid),owner:'Dave',priority:'medium',subs:[],waits:[]});
+  S.sel=id; refresh(); setTimeout(function(){var e=document.getElementById('an');if(e){e.focus();e.select();}},0);
+}
+function addTrack(){var p=P();p.tracks.push({id:'tr'+Date.now(),name:'Track '+(p.tracks.length+1)});S.sel=null;refresh();toast('Track added. Rename it in the panel.');}
+function toggleDraw(){S.draw=!S.draw;S.from=null;refresh();}
+
+window.addEventListener('resize',function(){if(S.screen==='project'&&S.view==='map'&&P()&&P().actions.length)drawMap();});
+render();
+</script>
+</body>
+</html>
