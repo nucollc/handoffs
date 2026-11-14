@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What's Next TV · Event Ads</title>
+<!--
+  What's Next TV event ad page. One page per city, rebuilt daily by build_ads.py.
+
+  URL parameters:
+    layout = lowerthird  banner across the bottom of a transparent 16:9 page
+                         (Upstream Stream Designer "website" layer over the 24/7 stream)
+             strip       banner fills the whole viewport (signage app banner zone)
+             card        full-screen 16:9 ad card (between videos / full-screen signage)
+    src    = stream | store | web   which tracked QR set to show (default: stream)
+    sec    = seconds per ad (default 12)
+
+  Examples:
+    index.html?layout=lowerthird&src=stream
+    index.html?layout=strip&src=store
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root { --orange:#FA5723; --black:#060605; --ink:#141412; --muted:#b9b6ae; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { width:100%; height:100%; overflow:hidden; background:transparent;
+               font-family:'Poppins', system-ui, sans-serif; color:#fff; }
+  body.opaque { background:var(--black); }
+
+  /* fixed 1920-wide design canvas, scaled to whatever size the page is shown at */
+  #stage { position:absolute; left:0; top:0; transform-origin:0 0; }
+
+  .ad { position:absolute; inset:0; opacity:0; transition:opacity .6s ease, transform .6s ease; }
+  .ad.on { opacity:1; }
+
+  /* ---------- banner (used by lowerthird and strip) ---------- */
+  .banner { position:absolute; display:flex; align-items:stretch; overflow:hidden;
+            background:rgba(6,6,5,.92); border-radius:28px;
+            box-shadow:0 18px 50px rgba(0,0,0,.45); }
+  .lowerthird .banner { left:80px; right:80px; bottom:64px; height:250px;
+                        transform:translateY(40px); transition:transform .6s cubic-bezier(.2,.8,.2,1); }
+  .lowerthird .ad.on .banner { transform:translateY(0); }
+  .strip .banner { inset:0; border-radius:0; }
+
+  .tag { flex:0 0 340px; background:var(--orange); display:flex; flex-direction:column;
+         justify-content:center; padding:0 34px; gap:10px; }
+  .tag .brand { font-weight:800; font-size:24px; letter-spacing:.06em; line-height:1; }
+  .tag .brand b { background:#fff; color:var(--orange); border-radius:6px; padding:1px 7px; margin-left:4px; }
+  .tag .when { font-weight:800; font-size:44px; line-height:1.08; white-space:pre-line; }
+  .tag .when.small { font-size:34px; }
+
+  .body { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 44px; min-width:0; }
+  .title { font-weight:700; font-size:58px; line-height:1.08; display:-webkit-box;
+           -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .venue { margin-top:12px; font-weight:500; font-size:28px; color:var(--muted);
+           white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .venue .city { color:var(--orange); font-weight:700; letter-spacing:.08em; margin-right:14px; }
+
+  .qr { flex:0 0 auto; display:flex; align-items:center; gap:22px; padding:0 34px 0 10px; }
+  .qr .cta { text-align:right; font-weight:700; font-size:24px; line-height:1.2; color:#fff; }
+  .qr .cta span { display:block; color:var(--orange); font-size:20px; letter-spacing:.06em; }
+  .qr img { width:200px; height:200px; background:#fff; border-radius:16px; padding:8px; }
+
+  .progress { position:absolute; left:0; bottom:0; height:6px; background:var(--orange); width:0; }
+  .ad.on .progress { width:100%; transition:width linear var(--sec); }
+
+  /* ---------- full-screen card ---------- */
+  .card .ad { background:radial-gradient(ellipse at 70% 30%, rgba(250,87,35,.22), transparent 60%), var(--black); }
+  .card .wrap { position:absolute; inset:110px 130px; display:flex; gap:90px; align-items:center; }
+  .card .left { flex:1; min-width:0; }
+  .card .brand { font-weight:800; font-size:34px; letter-spacing:.06em; }
+  .card .brand b { background:var(--orange); color:#fff; border-radius:8px; padding:2px 10px; margin-left:6px; }
+  .card .when { display:inline-block; margin-top:60px; background:var(--orange); border-radius:14px;
+                padding:10px 26px; font-weight:800; font-size:46px; white-space:pre-line; }
+  .card .title { margin-top:34px; font-size:96px; line-height:1.04; -webkit-line-clamp:3; }
+  .card .venue { margin-top:30px; font-size:38px; }
+  .card .right { flex:0 0 520px; text-align:center; }
+  .card .right img { width:520px; height:520px; background:#fff; border-radius:28px; padding:18px; }
+  .card .right .cta { margin-top:26px; font-weight:700; font-size:36px; }
+  .card .right .cta span { color:var(--orange); display:block; font-size:28px; letter-spacing:.06em; }
+
+  /* full-screen card WITH the event image */
+  .card .ad.img { background:var(--black); }
+  .card .bgimg { position:absolute; inset:-60px; background-size:cover; background-position:center;
+                 filter:blur(48px) brightness(.35) saturate(1.2); }
+  .card .shade { position:absolute; inset:0;
+                 background:linear-gradient(90deg, rgba(6,6,5,.15) 0%, rgba(6,6,5,.55) 55%, rgba(6,6,5,.9) 100%); }
+  .card .frame { position:absolute; left:80px; top:80px; width:1000px; height:920px; border-radius:30px;
+                 overflow:hidden; background:#111; box-shadow:0 30px 80px rgba(0,0,0,.6); }
+  .card .frame .fill { position:absolute; inset:-40px; background-size:cover; background-position:center;
+                       filter:blur(30px) brightness(.55); }
+  .card .frame img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+  .card .info { position:absolute; left:1150px; right:90px; top:80px; bottom:80px;
+                display:flex; flex-direction:column; justify-content:center; }
+  .card .info .when { margin-top:44px; font-size:38px; align-self:flex-start; }
+  .card .info .title { margin-top:28px; font-size:66px; line-height:1.08; -webkit-line-clamp:3; }
+  .card .info .venue { margin-top:22px; font-size:30px; white-space:normal; display:-webkit-box;
+                       -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+  .card .info .scan { margin-top:48px; display:flex; align-items:center; gap:30px; }
+  .card .info .scan img { width:280px; height:280px; background:#fff; border-radius:22px; padding:12px; }
+  .card .info .scan .cta { font-weight:700; font-size:34px; line-height:1.2; }
+  .card .info .scan .cta span { display:block; color:var(--orange); font-size:24px; letter-spacing:.06em; margin-top:6px; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<script>
+(() => {
+  const q = new URLSearchParams(location.search);
+  const layout = ['lowerthird','strip','card'].includes(q.get('layout')) ? q.get('layout') : 'lowerthird';
+  const src = ['stream','store','web'].includes(q.get('src')) ? q.get('src') : 'stream';
+  const sec = Math.max(4, parseInt(q.get('sec') || '12', 10));
+  const stage = document.getElementById('stage');
+  stage.className = layout;
+  if (layout !== 'lowerthird') document.body.classList.add('opaque');
+
+  // design size per layout; scaled to fit the actual viewport
+  const W = 1920, H = layout === 'strip' ? 270 : 1080;
+  function fit() {
+    const s = layout === 'strip' ? innerWidth / W : Math.min(innerWidth / W, innerHeight / H);
+    stage.style.width = W + 'px';
+    stage.style.height = (layout === 'strip' ? innerHeight / s : H) + 'px';
+    stage.style.transform = `scale(${s})`;
+  }
+  addEventListener('resize', fit); fit();
+
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const BRAND = `WHAT'S NEXT<b>TV</b>`;
+
+  function render(data) {
+    const ads = data.ads || [];
+    stage.innerHTML = '';
+    if (!ads.length) return [];
+    return ads.map((ad, i) => {
+      const el = document.createElement('div');
+      el.className = 'ad';
+      el.style.setProperty('--sec', sec + 's');
+      const qr = esc(ad.qr[src]);
+      const city = esc((data.city_name || '').toUpperCase());
+      const venueLine = [ad.time, ad.venue].filter(Boolean).map(esc).join(' · ');
+      const whenOne = esc(ad.when.replace('\n', ' ')) + (ad.time && !ad.when.startsWith('ON NOW') ? ' · ' + esc(ad.time) : '');
+      const textCard = `<div class="wrap">
+            <div class="left"><div class="brand">${BRAND}</div>
+              <div class="when">${esc(ad.when)}</div>
+              <div class="title">${esc(ad.title)}</div>
+              <div class="venue"><span class="city">${city}</span>${venueLine}</div></div>
+            <div class="right"><img src="${qr}" alt=""><div class="cta">Scan for details<span>WHATSNEXT.BUZZ</span></div></div>
+          </div><div class="progress"></div>`;
+      if (layout === 'card' && ad.image) {
+        const im = esc(ad.image);
+        el.classList.add('img');
+        el.innerHTML = `<div class="bgimg" style="background-image:url('${im}')"></div><div class="shade"></div>
+            <div class="frame"><div class="fill" style="background-image:url('${im}')"></div><img src="${im}" alt=""></div>
+            <div class="info"><div class="brand">${BRAND}</div>
+              <div class="when">${whenOne}</div>
+              <div class="title">${esc(ad.title)}</div>
+              <div class="venue"><span class="city">${city}</span>${venueLine}</div>
+              <div class="scan"><img src="${qr}" alt=""><div class="cta">Scan for<br>details<span>WHATSNEXT.BUZZ</span></div></div></div>
+            <div class="progress"></div>`;
+        // if the event image fails to load, fall back to the text card
+        el.querySelector('.frame img').onerror = () => { el.classList.remove('img'); el.innerHTML = textCard; };
+      } else if (layout === 'card') {
+        el.innerHTML = textCard;
+      } else {
+        const whenCls = ad.when.split('\n').some(l => l.length > 8) ? 'when small' : 'when';
+        el.innerHTML = `<div class="banner">
+            <div class="tag"><div class="brand">${BRAND}</div><div class="${whenCls}">${esc(ad.when)}</div></div>
+            <div class="body"><div class="title">${esc(ad.title)}</div>
+              <div class="venue"><span class="city">${city}</span>${venueLine}</div></div>
+            <div class="qr"><div class="cta">Scan for<br>details<span>WHATSNEXT.BUZZ</span></div><img src="${qr}" alt=""></div>
+            <div class="progress"></div></div>`;
+      }
+      stage.appendChild(el);
+      return el;
+    });
+  }
+
+  let els = [], idx = -1, timer = null, lastBuilt = null;
+  function next() {
+    if (!els.length) return;
+    els.forEach(e => e.classList.remove('on'));
+    idx = (idx + 1) % els.length;
+    void els[idx].offsetWidth;            // restart the progress bar
+    els[idx].classList.add('on');
+  }
+  async function load() {
+    try {
+      const r = await fetch('ads.json?t=' + Date.now(), { cache: 'no-store' });
+      const data = await r.json();
+      if (data.generated_at !== lastBuilt) {
+        lastBuilt = data.generated_at;
+        els = render(data); idx = -1;
+        clearInterval(timer); next();
+        timer = setInterval(next, sec * 1000);
+      }
+    } catch (e) { /* keep showing the current ads if the refresh fails */ }
+  }
+  load();
+  setInterval(load, 10 * 60 * 1000);      // pick up the daily rebuild
+})();
+</script>
+</body>
+</html>

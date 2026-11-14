@@ -1,0 +1,2047 @@
+{
+ "city": "fallbrook",
+ "city_name": "Fallbrook",
+ "fetched_at": "2026-11-14T12:20:00-08:00",
+ "events": [
+  {
+   "title": "Holiday Show",
+   "url": "https://whatsnext.buzz/fallbrook/events/holiday-show-2026-11-13",
+   "date": null,
+   "end": "2027-01-09",
+   "venue": "Fallbrook Art Center",
+   "time": null
+  },
+  {
+   "title": "Stargazing at Adobe Hill",
+   "url": "https://whatsnext.buzz/fallbrook/events/stargazing-at-adobe-hill-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "adobe hill winery",
+   "time": null
+  },
+  {
+   "title": "Improv and Storytelling",
+   "url": "https://whatsnext.buzz/fallbrook/events/improv-and-storytelling-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "310 E Alvarado St, Fallbrook, CA",
+   "time": null
+  },
+  {
+   "title": "Country Strong: Free Workout for Active duty, Veterans & First Responders",
+   "url": "https://whatsnext.buzz/fallbrook/events/country-strong-free-workout-for-active-duty-veterans-first-responders-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "325 N. Brandon Road, Fallbrook, CA",
+   "time": null
+  },
+  {
+   "title": "Adult Belly Dance Class - Every Saturday at 12:00pm at Heritage Hall",
+   "url": "https://whatsnext.buzz/fallbrook/events/adult-belly-dance-class-every-saturday-at-12-00pm-at-heritage-hall-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "122 W Ash St., Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Comedy Night in Fallbrook",
+   "url": "https://whatsnext.buzz/fallbrook/events/comedy-night-in-fallbrook-2-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "Village Roots Deli & Taproom",
+   "time": null
+  },
+  {
+   "title": "Cat Adoption With Fallbrook Animal Sanctuary",
+   "url": "https://whatsnext.buzz/fallbrook/events/cat-adoption-with-fallbrook-animal-sanctuary-2026-11-14",
+   "date": "2026-11-14",
+   "end": null,
+   "venue": "1101-B S Main Ave, Fallbrook, CA 92028",
+   "time": null
+  },
+  {
+   "title": "2026 Dueling Pianos Fundraiser",
+   "url": "https://whatsnext.buzz/fallbrook/events/2026-dueling-pianos-fundraiser-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "Charles E. Swisher VFW Post 1924 Fallbrook, CA",
+   "time": null
+  },
+  {
+   "title": "Pancake Breakfast Fundraiser",
+   "url": "https://whatsnext.buzz/fallbrook/events/pancake-breakfast-fundraiser-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Manure Composting for Backyard Farmers Workshop",
+   "url": "https://whatsnext.buzz/fallbrook/events/manure-composting-for-backyard-farmers-workshop-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "2160 Rainbow Valley Blvd., Rainbow, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Season Kickoff Fundraiser at Harry's",
+   "url": "https://whatsnext.buzz/fallbrook/events/season-kickoff-fundraiser-at-harry-s-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "Harry's Sports Bar & Grill",
+   "time": null
+  },
+  {
+   "title": "High Society Jazz Band",
+   "url": "https://whatsnext.buzz/fallbrook/events/high-society-jazz-band-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Dueling Pianos",
+   "url": "https://whatsnext.buzz/fallbrook/events/dueling-pianos-2026-11-15",
+   "date": "2026-11-15",
+   "end": null,
+   "venue": "VFW Post 1924",
+   "time": null
+  },
+  {
+   "title": "American Red Cross Blood Drive",
+   "url": "https://whatsnext.buzz/fallbrook/events/american-red-cross-blood-drive-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "1620 S Stage Coach Ln, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Arthritis & Fall Prevention",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-arthritis-fall-prevention-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Pickleball",
+   "url": "https://whatsnext.buzz/fallbrook/events/pickleball-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Malis Be Well Yoga Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/malis-be-well-yoga-class-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Just Breathe",
+   "url": "https://whatsnext.buzz/fallbrook/events/just-breathe-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Blood Drive with San Diego Blood Bank",
+   "url": "https://whatsnext.buzz/fallbrook/events/blood-drive-with-san-diego-blood-bank-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-6-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Senior Book Club",
+   "url": "https://whatsnext.buzz/fallbrook/events/senior-book-club-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fit, Fab, and Fun",
+   "url": "https://whatsnext.buzz/fallbrook/events/fit-fab-and-fun-2026-11-16",
+   "date": "2026-11-16",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "All Cancer Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/all-cancer-support-group-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-3-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Mobility",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-mobility-2-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Chair Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/chair-yoga-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fallbrook High School Community Service Faire",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-high-school-community-service-faire-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Fallbrook High School",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Bridge (Full Version)",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-full-version-2026-11-17",
+   "date": "2026-11-17",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-2-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Rainbow Planning Group Meeting",
+   "url": "https://whatsnext.buzz/fallbrook/events/rainbow-planning-group-meeting-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Arthritis & Fall Prevention",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-arthritis-fall-prevention-2-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tremble Clefs",
+   "url": "https://whatsnext.buzz/fallbrook/events/tremble-clefs-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Conversational Spanish Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/conversational-spanish-class-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Senior of the Month Celebration, Eileen Delaney",
+   "url": "https://whatsnext.buzz/fallbrook/events/senior-of-the-month-celebration-eileen-delaney-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-2-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-2-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-2-2026-11-18",
+   "date": "2026-11-18",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Bingo!",
+   "url": "https://whatsnext.buzz/fallbrook/events/bingo-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "2160 Rainbow Valley Blvd., Rainbow, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Flow & Mastery",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-flow-mastery-2-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bereavement Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/bereavement-support-group-2-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-4-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Zumba",
+   "url": "https://whatsnext.buzz/fallbrook/events/zumba-2-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-2-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-2-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "ACBL Bridge (Set Fee)",
+   "url": "https://whatsnext.buzz/fallbrook/events/acbl-bridge-set-fee-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Veterans Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/veterans-group-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Social Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/social-bridge-2026-11-19",
+   "date": "2026-11-19",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "The Throwing Wheel: A Pottery Throwing Intensive",
+   "url": "https://whatsnext.buzz/fallbrook/events/the-throwing-wheel-a-pottery-throwing-intensive-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "310 E Alvarado St, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Hello Fall! Guided Paint Party",
+   "url": "https://whatsnext.buzz/fallbrook/events/hello-fall-guided-paint-party-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "310 E Alvarado St, Fallbrook, CA",
+   "time": null
+  },
+  {
+   "title": "ST. John's Momco Meetup, November 2026",
+   "url": "https://whatsnext.buzz/fallbrook/events/st-john-s-momco-meetup-november-2026-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "St. John's Episcopal Church, 433 N. Orange Ave., Fallbrook, CA 92028",
+   "time": null
+  },
+  {
+   "title": "Fun Friday - Social Recreation",
+   "url": "https://whatsnext.buzz/fallbrook/events/fun-friday-social-recreation-4-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "127 N Main Ave suite a",
+   "time": null
+  },
+  {
+   "title": "Classic Movie Night: The Wizard of Oz (1939)",
+   "url": "https://whatsnext.buzz/fallbrook/events/classic-movie-night-the-wizard-of-oz-1939-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Fix it Fridays",
+   "url": "https://whatsnext.buzz/fallbrook/events/fix-it-fridays-2-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "North County Parkinson's Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/north-county-parkinson-s-support-group-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-3-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Ukulele Practice",
+   "url": "https://whatsnext.buzz/fallbrook/events/ukulele-practice-2026-11-20",
+   "date": "2026-11-20",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "[IN-PERSON] Adult Mental Health First Aid Training",
+   "url": "https://whatsnext.buzz/fallbrook/events/in-person-adult-mental-health-first-aid-training-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "The Holiday Wellness Survival Guide",
+   "url": "https://whatsnext.buzz/fallbrook/events/the-holiday-wellness-survival-guide-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Beyond the Cancer Diagnosis",
+   "url": "https://whatsnext.buzz/fallbrook/events/beyond-the-cancer-diagnosis-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Hauling Holiday Cheer",
+   "url": "https://whatsnext.buzz/fallbrook/events/hauling-holiday-cheer-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Mountain Mike's Pizza (1125 S Mission Blvd, Fallbrook, CA)",
+   "time": null
+  },
+  {
+   "title": "REINS of Valor Family BBQ",
+   "url": "https://whatsnext.buzz/fallbrook/events/reins-of-valor-family-bbq-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "4461 S. Mission Road, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Eagles & Friends \"Live\" On Stage - The Eagles Tribu",
+   "url": "https://whatsnext.buzz/fallbrook/events/eagles-friends-live-on-stage-the-eagles-tribu-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Adult Mental Health First Aid Training",
+   "url": "https://whatsnext.buzz/fallbrook/events/adult-mental-health-first-aid-training-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "REINS CARES - Equine Therapy Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/reins-cares-equine-therapy-support-group-2026-11-21",
+   "date": "2026-11-21",
+   "end": null,
+   "venue": "Reins Campus",
+   "time": null
+  },
+  {
+   "title": "Sunday School Worship",
+   "url": "https://whatsnext.buzz/fallbrook/events/sunday-school-worship-2026-11-22",
+   "date": "2026-11-22",
+   "end": null,
+   "venue": "The Church of Jesus Christ of Latter-day Saints",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Sunday Worship Services",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-sunday-worship-services-2026-11-22",
+   "date": "2026-11-22",
+   "end": null,
+   "venue": "The Church of Jesus Christ of Latter-day Saints",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Arthritis & Fall Prevention",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-arthritis-fall-prevention-3-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Malis Be Well Yoga Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/malis-be-well-yoga-class-2-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-4-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Just Breathe",
+   "url": "https://whatsnext.buzz/fallbrook/events/just-breathe-2-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Tech Connection - at Senior Lunch",
+   "url": "https://whatsnext.buzz/fallbrook/events/tech-connection-at-senior-lunch-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Fallbrook Community Center",
+   "time": null
+  },
+  {
+   "title": "Pickleball",
+   "url": "https://whatsnext.buzz/fallbrook/events/pickleball-2-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-7-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-3-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-3-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fit, Fab, and Fun",
+   "url": "https://whatsnext.buzz/fallbrook/events/fit-fab-and-fun-2-2026-11-23",
+   "date": "2026-11-23",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-5-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Mobility",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-mobility-3-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bridge (Full Version)",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-full-version-2-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Chair Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/chair-yoga-2-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-3-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-3-2026-11-24",
+   "date": "2026-11-24",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-3-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Thanksgiving Eve Praise & Pie",
+   "url": "https://whatsnext.buzz/fallbrook/events/thanksgiving-eve-praise-pie-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "1620 S Stage Coach Ln, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Arthritis & Fall Prevention",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-arthritis-fall-prevention-4-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tremble Clefs",
+   "url": "https://whatsnext.buzz/fallbrook/events/tremble-clefs-2-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Conversational Spanish Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/conversational-spanish-class-2-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-5-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-4-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-4-2026-11-25",
+   "date": "2026-11-25",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-4-2026-11-26",
+   "date": "2026-11-26",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Social Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/social-bridge-2-2026-11-26",
+   "date": "2026-11-26",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "ACBL Bridge (Set Fee)",
+   "url": "https://whatsnext.buzz/fallbrook/events/acbl-bridge-set-fee-2-2026-11-26",
+   "date": "2026-11-26",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-4-2026-11-26",
+   "date": "2026-11-26",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Ukulele Practice",
+   "url": "https://whatsnext.buzz/fallbrook/events/ukulele-practice-2-2026-11-27",
+   "date": "2026-11-27",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-6-2026-11-27",
+   "date": "2026-11-27",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fix-It-Fridays",
+   "url": "https://whatsnext.buzz/fallbrook/events/fix-it-fridays-4-2026-11-27",
+   "date": "2026-11-27",
+   "end": null,
+   "venue": "FRHD - Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-2-2026-11-27",
+   "date": "2026-11-27",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Village Artisan Faire",
+   "url": "https://whatsnext.buzz/fallbrook/events/village-artisan-faire-2026-11-28",
+   "date": "2026-11-28",
+   "end": null,
+   "venue": "111 S Main Ave, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Monthly Crop Swap",
+   "url": "https://whatsnext.buzz/fallbrook/events/monthly-crop-swap-2026-11-28",
+   "date": "2026-11-28",
+   "end": null,
+   "venue": "2160 Rainbow Valley Blvd., Rainbow, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Crop Swap!",
+   "url": "https://whatsnext.buzz/fallbrook/events/crop-swap-2026-11-28",
+   "date": "2026-11-28",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Malis Be Well Yoga Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/malis-be-well-yoga-class-3-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-8-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Just Breathe",
+   "url": "https://whatsnext.buzz/fallbrook/events/just-breathe-3-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pickleball",
+   "url": "https://whatsnext.buzz/fallbrook/events/pickleball-3-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-7-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fit, Fab, and Fun",
+   "url": "https://whatsnext.buzz/fallbrook/events/fit-fab-and-fun-3-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-5-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-5-2026-11-30",
+   "date": "2026-11-30",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Serie Mensual de Mindfulness",
+   "url": "https://whatsnext.buzz/fallbrook/events/serie-mensual-de-mindfulness-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Monthly Mindfulness Series",
+   "url": "https://whatsnext.buzz/fallbrook/events/monthly-mindfulness-series-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-6-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Healthy Habits Hub",
+   "url": "https://whatsnext.buzz/fallbrook/events/healthy-habits-hub-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Monthly Mindfulness - Finding Peace in Busy, Stressful Times",
+   "url": "https://whatsnext.buzz/fallbrook/events/monthly-mindfulness-finding-peace-in-busy-stressful-times-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Mensual de Mindfulness - Encontrando Paz en Tiempos Ocupados y Estresantes",
+   "url": "https://whatsnext.buzz/fallbrook/events/mensual-de-mindfulness-encontrando-paz-en-tiempos-ocupados-y-estresantes-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Mobility",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-mobility-4-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-5-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-5-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Chair Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/chair-yoga-3-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Bridge (Full Version)",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-full-version-3-2026-12-01",
+   "date": "2026-12-01",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-4-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Tremble Clefs",
+   "url": "https://whatsnext.buzz/fallbrook/events/tremble-clefs-3-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Land Conservancy Holiday Party",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-land-conservancy-holiday-party-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Palomares House & Sculpture Garden",
+   "time": null
+  },
+  {
+   "title": "Conversational Spanish Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/conversational-spanish-class-3-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-8-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-6-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-6-2026-12-02",
+   "date": "2026-12-02",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Zumba",
+   "url": "https://whatsnext.buzz/fallbrook/events/zumba-3-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Find Your Calm",
+   "url": "https://whatsnext.buzz/fallbrook/events/find-your-calm-2-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Flow & Mastery",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-flow-mastery-3-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-7-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bereavement Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/bereavement-support-group-3-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "La Mesa de Acuarela",
+   "url": "https://whatsnext.buzz/fallbrook/events/la-mesa-de-acuarela-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Caregiver Support Community",
+   "url": "https://whatsnext.buzz/fallbrook/events/caregiver-support-community-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Arte para el Alma",
+   "url": "https://whatsnext.buzz/fallbrook/events/arte-para-el-alma-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "1636 E Mission Rd",
+   "time": null
+  },
+  {
+   "title": "Caregivers Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/caregivers-support-group-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "FRHD - Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "ACBL Bridge (Set Fee)",
+   "url": "https://whatsnext.buzz/fallbrook/events/acbl-bridge-set-fee-3-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Social Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/social-bridge-3-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-6-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-6-2026-12-03",
+   "date": "2026-12-03",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Ukulele Practice",
+   "url": "https://whatsnext.buzz/fallbrook/events/ukulele-practice-3-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Tree Lighting",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-tree-lighting-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "341 Heald Ln, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "RON POKRASSO - Layered Monotype and Collage Intensive",
+   "url": "https://whatsnext.buzz/fallbrook/events/ron-pokrasso-layered-monotype-and-collage-intensive-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Fallbrook School of the Arts",
+   "time": null
+  },
+  {
+   "title": "2026 Fallbrook Christmas Parade Watch Party!",
+   "url": "https://whatsnext.buzz/fallbrook/events/2026-fallbrook-christmas-parade-watch-party-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Classic Movie Night: Holiday Affair (1949)",
+   "url": "https://whatsnext.buzz/fallbrook/events/classic-movie-night-holiday-affair-1949-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Fix it Fridays",
+   "url": "https://whatsnext.buzz/fallbrook/events/fix-it-fridays-3-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-3-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-9-2026-12-04",
+   "date": "2026-12-04",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Christmas Parade",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-christmas-parade-2026-12-05",
+   "date": "2026-12-05",
+   "end": null,
+   "venue": "Main Ave, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Men's Breakfast",
+   "url": "https://whatsnext.buzz/fallbrook/events/men-s-breakfast-2026-12-05",
+   "date": "2026-12-05",
+   "end": null,
+   "venue": "1620 S Stage Coach Ln, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Rainbow Float for the Annual Fallbrook Christmas Parade",
+   "url": "https://whatsnext.buzz/fallbrook/events/rainbow-float-for-the-annual-fallbrook-christmas-parade-2026-12-05",
+   "date": "2026-12-05",
+   "end": null,
+   "venue": "2160 Rainbow Valley Blvd, Fallbrook, CA 92028-9777, United States",
+   "time": null
+  },
+  {
+   "title": "2026 Quarterly Guild Salons",
+   "url": "https://whatsnext.buzz/fallbrook/events/2026-quarterly-guild-salons-2026-12-05",
+   "date": "2026-12-05",
+   "end": null,
+   "venue": "Fallbrook School of The Arts",
+   "time": null
+  },
+  {
+   "title": "Take Down Christmas Float",
+   "url": "https://whatsnext.buzz/fallbrook/events/take-down-christmas-float-2026-12-06",
+   "date": "2026-12-06",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-9-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-10-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pickleball",
+   "url": "https://whatsnext.buzz/fallbrook/events/pickleball-4-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-7-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fit, Fab, and Fun",
+   "url": "https://whatsnext.buzz/fallbrook/events/fit-fab-and-fun-4-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Just Breathe",
+   "url": "https://whatsnext.buzz/fallbrook/events/just-breathe-4-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-7-2026-12-07",
+   "date": "2026-12-07",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Lessons & Practice",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-lessons-practice-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "5307 Fifth St",
+   "time": null
+  },
+  {
+   "title": "Center for Senior Well-Being Monthly Walk",
+   "url": "https://whatsnext.buzz/fallbrook/events/center-for-senior-well-being-monthly-walk-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "Dinwiddie Preserve",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-7-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Bridge (Full Version)",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-full-version-4-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Chair Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/chair-yoga-4-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-7-2026-12-08",
+   "date": "2026-12-08",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-5-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Pinochle",
+   "url": "https://whatsnext.buzz/fallbrook/events/pinochle-8-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Senior of the Month Celebration",
+   "url": "https://whatsnext.buzz/fallbrook/events/senior-of-the-month-celebration-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Mah Jong!",
+   "url": "https://whatsnext.buzz/fallbrook/events/mah-jong-8-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-11-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Conversational Spanish Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/conversational-spanish-class-4-2026-12-09",
+   "date": "2026-12-09",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Grange Community Meeting",
+   "url": "https://whatsnext.buzz/fallbrook/events/grange-community-meeting-2-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "ACBL Bridge (Set Fee)",
+   "url": "https://whatsnext.buzz/fallbrook/events/acbl-bridge-set-fee-4-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Dementia Support Group Meeting",
+   "url": "https://whatsnext.buzz/fallbrook/events/dementia-support-group-meeting-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/line-dancing-class-8-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Beginning Line Dancing Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/beginning-line-dancing-class-8-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Social Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/social-bridge-4-2026-12-10",
+   "date": "2026-12-10",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Classic Movie Night: A Christmas Story (1983)",
+   "url": "https://whatsnext.buzz/fallbrook/events/classic-movie-night-a-christmas-story-1983-2026-12-11",
+   "date": "2026-12-11",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Bridge",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridge-4-2026-12-11",
+   "date": "2026-12-11",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Ukulele Practice",
+   "url": "https://whatsnext.buzz/fallbrook/events/ukulele-practice-4-2026-12-11",
+   "date": "2026-12-11",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Exercise Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/exercise-class-12-2026-12-11",
+   "date": "2026-12-11",
+   "end": null,
+   "venue": "Center for Senior Wellbeing, East Campus",
+   "time": null
+  },
+  {
+   "title": "Fix-It-Fridays",
+   "url": "https://whatsnext.buzz/fallbrook/events/fix-it-fridays-5-2026-12-11",
+   "date": "2026-12-11",
+   "end": null,
+   "venue": "FRHD - Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "I Love a Clean San Diego Community Clean-Up",
+   "url": "https://whatsnext.buzz/fallbrook/events/i-love-a-clean-san-diego-community-clean-up-2026-12-12",
+   "date": "2026-12-12",
+   "end": null,
+   "venue": "Fallbrook Library",
+   "time": null
+  },
+  {
+   "title": "Holiday Social Potluck + Toy Drive",
+   "url": "https://whatsnext.buzz/fallbrook/events/holiday-social-potluck-toy-drive-2026-12-12",
+   "date": "2026-12-12",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Christmas Potluck (and Karaoke)",
+   "url": "https://whatsnext.buzz/fallbrook/events/christmas-potluck-and-karaoke-2026-12-12",
+   "date": "2026-12-12",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "ALIAS BRASS",
+   "url": "https://whatsnext.buzz/fallbrook/events/alias-brass-2026-12-13",
+   "date": "2026-12-13",
+   "end": null,
+   "venue": "Bob Burton Center for the Performing Arts",
+   "time": null
+  },
+  {
+   "title": "The Art of Human to Human Connection",
+   "url": "https://whatsnext.buzz/fallbrook/events/the-art-of-human-to-human-connection-2027-01-22",
+   "date": "2027-01-22",
+   "end": null,
+   "venue": "Hilltop Spiritual Center",
+   "time": null
+  },
+  {
+   "title": "Fix it Fridays",
+   "url": "https://whatsnext.buzz/fallbrook/events/fix-it-fridays-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Fun Friday - Social Recreation",
+   "url": "https://whatsnext.buzz/fallbrook/events/fun-friday-social-recreation-3-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "127 N Main Ave suite a",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Ballroom Dance Club - Swing, Salsa, Ballroom Class Every Friday",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-ballroom-dance-club-swing-salsa-ballroom-class-every-friday-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "122 W Ash St., Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "The Chosen S6 Early Showing with TruWitness",
+   "url": "https://whatsnext.buzz/fallbrook/events/the-chosen-s6-early-showing-with-truwitness-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "North Coast Church Fallbrook",
+   "time": null
+  },
+  {
+   "title": "Friendly Scarecrow - Kids Guided Paint Party",
+   "url": "https://whatsnext.buzz/fallbrook/events/friendly-scarecrow-kids-guided-paint-party-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "310 E Alvarado St, Fallbrook, CA",
+   "time": null
+  },
+  {
+   "title": "Classic Movie Night: To Catch a Thief (1955)",
+   "url": "https://whatsnext.buzz/fallbrook/events/classic-movie-night-to-catch-a-thief-1955-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "Fallbrook Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Farm Fridays - Kids on the Farm!",
+   "url": "https://whatsnext.buzz/fallbrook/events/farm-fridays-kids-on-the-farm-2-2026-11-13",
+   "date": "2026-11-13",
+   "end": null,
+   "venue": "Splitrock Farm and Retreat",
+   "time": null
+  },
+  {
+   "title": "Creating Through the Cancer Journey",
+   "url": "https://whatsnext.buzz/fallbrook/events/creating-through-the-cancer-journey-2-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-2-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Flow & Mastery",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-flow-mastery-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Bereavement Support Group",
+   "url": "https://whatsnext.buzz/fallbrook/events/bereavement-support-group-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Zumba",
+   "url": "https://whatsnext.buzz/fallbrook/events/zumba-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "General Meeting",
+   "url": "https://whatsnext.buzz/fallbrook/events/general-meeting-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "2400 S. Stagecoach Lane, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Grange Community Meeting",
+   "url": "https://whatsnext.buzz/fallbrook/events/grange-community-meeting-2026-11-12",
+   "date": "2026-11-12",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Veteran's Day Parade",
+   "url": "https://whatsnext.buzz/fallbrook/events/veteran-s-day-parade-2026-11-11",
+   "date": "2026-11-11",
+   "end": null,
+   "venue": "111 S Main Ave, Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Toddler Dance Class - Ballet, Tap, Acro - Wednesdays 4pm - Fallbrook",
+   "url": "https://whatsnext.buzz/fallbrook/events/toddler-dance-class-ballet-tap-acro-wednesdays-4pm-fallbrook-2026-11-11",
+   "date": "2026-11-11",
+   "end": null,
+   "venue": "122 W Ash St., Fallbrook, CA, United States, California 92028",
+   "time": null
+  },
+  {
+   "title": "Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/yoga-2026-11-11",
+   "date": "2026-11-11",
+   "end": null,
+   "venue": "Rainbow Valley Grange",
+   "time": null
+  },
+  {
+   "title": "Tai Chi for Mobility",
+   "url": "https://whatsnext.buzz/fallbrook/events/tai-chi-for-mobility-2026-11-10",
+   "date": "2026-11-10",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "RX Ballroom Class",
+   "url": "https://whatsnext.buzz/fallbrook/events/rx-ballroom-class-2026-11-10",
+   "date": "2026-11-10",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Holiday Toy Drive 11/9 - 12/16/26",
+   "url": "https://whatsnext.buzz/fallbrook/events/holiday-toy-drive-11-9-12-16-26-2026-11-09",
+   "date": "2026-11-09",
+   "end": null,
+   "venue": "2160 Rainbow Valley Blvd, Fallbrook, CA 92028-9777, United States",
+   "time": null
+  },
+  {
+   "title": "Insight Book Club",
+   "url": "https://whatsnext.buzz/fallbrook/events/insight-book-club-2026-11-09",
+   "date": "2026-11-09",
+   "end": null,
+   "venue": "Fallbrook Library",
+   "time": null
+  },
+  {
+   "title": "Friendly Scarecrow Guided Paint Party Event Ags 8+",
+   "url": "https://whatsnext.buzz/fallbrook/events/friendly-scarecrow-guided-paint-party-event-ags-8-2026-11-09",
+   "date": "2026-11-09",
+   "end": null,
+   "venue": "Fallbrook Community Center and Park",
+   "time": null
+  },
+  {
+   "title": "Become a Dementia Friend",
+   "url": "https://whatsnext.buzz/fallbrook/events/become-a-dementia-friend-2026-11-09",
+   "date": "2026-11-09",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Baby Goat Yoga",
+   "url": "https://whatsnext.buzz/fallbrook/events/baby-goat-yoga-2026-11-08",
+   "date": "2026-11-08",
+   "end": null,
+   "venue": "Splitrock Farm and Retreat",
+   "time": null
+  },
+  {
+   "title": "Farm Fridays - Kids on the Farm!",
+   "url": "https://whatsnext.buzz/fallbrook/events/farm-fridays-kids-on-the-farm-2026-11-06",
+   "date": "2026-11-06",
+   "end": null,
+   "venue": "Splitrock Farm and Retreat",
+   "time": null
+  },
+  {
+   "title": "Fun Friday - Social Recreation",
+   "url": "https://whatsnext.buzz/fallbrook/events/fun-friday-social-recreation-2-2026-11-06",
+   "date": "2026-11-06",
+   "end": null,
+   "venue": "127 N Main Ave, Suite A",
+   "time": null
+  },
+  {
+   "title": "Creating Through the Cancer Journey",
+   "url": "https://whatsnext.buzz/fallbrook/events/creating-through-the-cancer-journey-2026-11-05",
+   "date": "2026-11-05",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Find Your Calm",
+   "url": "https://whatsnext.buzz/fallbrook/events/find-your-calm-2026-11-05",
+   "date": "2026-11-05",
+   "end": null,
+   "venue": "Community Health & Wellness Center",
+   "time": null
+  },
+  {
+   "title": "Cre8ive Coffee featuring Kona Coffee",
+   "url": "https://whatsnext.buzz/fallbrook/events/cre8ive-coffee-featuring-kona-coffee-2026-10-25",
+   "date": "2026-10-25",
+   "end": null,
+   "venue": "West Kauai Sun",
+   "time": null
+  },
+  {
+   "title": "Island Smoke N Grill: Chamorro Cuisine from Guam",
+   "url": "https://whatsnext.buzz/fallbrook/events/island-smoke-n-grill-chamorro-cuisine-from-guam-2026-10-23",
+   "date": "2026-10-23",
+   "end": null,
+   "venue": "West Kauai Sun",
+   "time": null
+  },
+  {
+   "title": "2026 Fallbrook Wine Fest",
+   "url": "https://whatsnext.buzz/fallbrook/events/2026-fallbrook-wine-fest-2026-10-10",
+   "date": "2026-10-10",
+   "end": null,
+   "venue": "40055 Ross Rd",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Wine Festival",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-wine-festival-2026-10-10",
+   "date": "2026-10-10",
+   "end": null,
+   "venue": "Daily Blooms Farm",
+   "time": null
+  },
+  {
+   "title": "Addressing Domestic Violence in Indian Country & Healing the Healers",
+   "url": "https://whatsnext.buzz/fallbrook/events/addressing-domestic-violence-in-indian-country-healing-the-healers-2026-10-01",
+   "date": "2026-10-01",
+   "end": null,
+   "venue": "Pala Mesa Resort",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Summer Wedding Extravaganza",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-summer-wedding-extravaganza-2026-07-08",
+   "date": "2026-07-08",
+   "end": null,
+   "venue": "Fallbrook Estate by Wedgewood Weddings",
+   "time": null
+  },
+  {
+   "title": "The Music of James Taylor - Never die Young - Fallbrook Mission Theater",
+   "url": "https://whatsnext.buzz/fallbrook/events/the-music-of-james-taylor-never-die-young-fallbrook-mission-theater-2026-06-27",
+   "date": "2026-06-27",
+   "end": null,
+   "venue": "The Mission Theater",
+   "time": null
+  },
+  {
+   "title": "June Concert - Celebrate America - Fallbrook Chorale",
+   "url": "https://whatsnext.buzz/fallbrook/events/june-concert-celebrate-america-fallbrook-chorale-2026-06-27",
+   "date": "2026-06-27",
+   "end": null,
+   "venue": "Sonrise Christian Fellowship",
+   "time": null
+  },
+  {
+   "title": "Pose With Purpose",
+   "url": "https://whatsnext.buzz/fallbrook/events/pose-with-purpose-2026-06-27",
+   "date": "2026-06-27",
+   "end": null,
+   "venue": "1588 S Mission Rd suite 210",
+   "time": null
+  },
+  {
+   "title": "Alika Grindz Street Food at West Kauai Sun",
+   "url": "https://whatsnext.buzz/fallbrook/events/alika-grindz-street-food-at-west-kauai-sun-2026-06-27",
+   "date": "2026-06-27",
+   "end": null,
+   "venue": "West Kauai Sun",
+   "time": null
+  },
+  {
+   "title": "Fun Friday - Social Recreation",
+   "url": "https://whatsnext.buzz/fallbrook/events/fun-friday-social-recreation-2026-06-26",
+   "date": "2026-06-26",
+   "end": null,
+   "venue": "127 N Main Ave suite a",
+   "time": null
+  },
+  {
+   "title": "Alice Wallace House concert along with Alex Bergan !",
+   "url": "https://whatsnext.buzz/fallbrook/events/alice-wallace-house-concert-along-with-alex-bergan-2026-06-21",
+   "date": "2026-06-21",
+   "end": null,
+   "venue": "House concert - address TBA",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Women\u2019s Connection Brunch - Wings of Change - featured speaker",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-women-s-connection-brunch-wings-of-change-featured-speaker-2026-06-19",
+   "date": "2026-06-19",
+   "end": null,
+   "venue": "The Grand Tradition Estate & Gardens",
+   "time": null
+  },
+  {
+   "title": "Lomilomi with Uncle Akani - Healing Hawaiian Massage",
+   "url": "https://whatsnext.buzz/fallbrook/events/lomilomi-with-uncle-akani-healing-hawaiian-massage-2026-06-19",
+   "date": "2026-06-19",
+   "end": null,
+   "venue": "West Kauai Sun",
+   "time": null
+  },
+  {
+   "title": "Da Rice Shack Street Food - West Kauai Sun",
+   "url": "https://whatsnext.buzz/fallbrook/events/da-rice-shack-street-food-west-kauai-sun-2026-06-14",
+   "date": "2026-06-14",
+   "end": null,
+   "venue": "West Kuaui Sun",
+   "time": null
+  },
+  {
+   "title": "Comedy Night in Fallbrook",
+   "url": "https://whatsnext.buzz/fallbrook/events/comedy-night-in-fallbrook-2026-06-13",
+   "date": "2026-06-13",
+   "end": null,
+   "venue": "Village Roots Deli & Taproom",
+   "time": null
+  },
+  {
+   "title": "U-Pick Lavender Event - Daily Blooms Farm",
+   "url": "https://whatsnext.buzz/fallbrook/events/u-pick-lavender-event-daily-blooms-farm-2026-06-13",
+   "date": "2026-06-13",
+   "end": null,
+   "venue": "Daily Blooms Farm",
+   "time": null
+  },
+  {
+   "title": "Comedy show - Village Roots Deli & Taproom",
+   "url": "https://whatsnext.buzz/fallbrook/events/comedy-show-village-roots-deli-taproom-2026-06-13",
+   "date": "2026-06-13",
+   "end": null,
+   "venue": "Village Roots Deli & Taproom",
+   "time": null
+  },
+  {
+   "title": "Charcuterie Board Workshop - Monserate Winery",
+   "url": "https://whatsnext.buzz/fallbrook/events/charcuterie-board-workshop-monserate-winery-2026-06-11",
+   "date": "2026-06-11",
+   "end": null,
+   "venue": "Monserate Winery",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Farmers Market",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-farmers-market-2026-06-06",
+   "date": "2026-06-06",
+   "end": null,
+   "venue": "Downtown Fallbrook",
+   "time": null
+  },
+  {
+   "title": "Shopping Event - The Main Exchange",
+   "url": "https://whatsnext.buzz/fallbrook/events/shopping-event-the-main-exchange-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "The Main Exchange",
+   "time": null
+  },
+  {
+   "title": "Lunch Specials - Cafe des Artistes",
+   "url": "https://whatsnext.buzz/fallbrook/events/lunch-specials-cafe-des-artistes-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Cafe Des Artistes",
+   "time": null
+  },
+  {
+   "title": "Golf - Pala Mesa Resort",
+   "url": "https://whatsnext.buzz/fallbrook/events/golf-pala-mesa-resort-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Pala Mesa Resort",
+   "time": null
+  },
+  {
+   "title": "Soccer Saints Summer Camp - Fallbrook",
+   "url": "https://whatsnext.buzz/fallbrook/events/soccer-saints-summer-camp-fallbrook-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Horse Creek Ridge County Park",
+   "time": null
+  },
+  {
+   "title": "Comedy night - Coal Bunker",
+   "url": "https://whatsnext.buzz/fallbrook/events/comedy-night-coal-bunker-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "The Coal Bunker",
+   "time": null
+  },
+  {
+   "title": "Bridal Lingerie Headquarters - Yara Lingerie Boutique",
+   "url": "https://whatsnext.buzz/fallbrook/events/bridal-lingerie-headquarters-yara-lingerie-boutique-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Yara Lingerie Boutique",
+   "time": null
+  },
+  {
+   "title": "Fallbrook Winery Wine Tasting",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-winery-wine-tasting-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Fallbrook Winery",
+   "time": null
+  },
+  {
+   "title": "Wine Tasting - Fallbrook Winery",
+   "url": "https://whatsnext.buzz/fallbrook/events/wine-tasting-fallbrook-winery-2026-06-01",
+   "date": "2026-06-01",
+   "end": null,
+   "venue": "Fallbrook Winery",
+   "time": null
+  },
+  {
+   "title": "Fallbrook's 59th Annual Car Show",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-s-59th-annual-car-show-2026-05-24",
+   "date": "2026-05-24",
+   "end": null,
+   "venue": "Downtown Fallbrook",
+   "time": null
+  },
+  {
+   "title": "Reignite Couple's Circle - Date Night for First Responders!",
+   "url": "https://whatsnext.buzz/fallbrook/events/reignite-couple-s-circle-date-night-for-first-responders-2026-05-23",
+   "date": "2026-05-23",
+   "end": null,
+   "venue": "Twin Creeks Farm",
+   "time": null
+  },
+  {
+   "title": "Noise Pollution - The ACDC Experience - The Mission Theater",
+   "url": "https://whatsnext.buzz/fallbrook/events/noise-pollution-the-acdc-experience-the-mission-theater-2026-05-22",
+   "date": "2026-05-22",
+   "end": null,
+   "venue": "The Mission Theater",
+   "time": null
+  },
+  {
+   "title": "Wine & Wildflowers - Palomares House and Park",
+   "url": "https://whatsnext.buzz/fallbrook/events/wine-wildflowers-palomares-house-and-park-2026-05-17",
+   "date": "2026-05-17",
+   "end": null,
+   "venue": "Palomares House and Park",
+   "time": null
+  },
+  {
+   "title": "Fallbrook's Got Talent - The Fallbrook's Womens Club",
+   "url": "https://whatsnext.buzz/fallbrook/events/fallbrook-s-got-talent-the-fallbrook-s-womens-club-2026-05-17",
+   "date": "2026-05-17",
+   "end": null,
+   "venue": "The Mission Theater",
+   "time": null
+  }
+ ]
+}
