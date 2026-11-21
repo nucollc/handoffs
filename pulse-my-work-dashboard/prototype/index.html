@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pulse · My Work dashboard (prototype)</title>
+<style>
+:root{
+  --bg:#F6F4EE; --card:#FFFDF8; --card-2:#F9F7F1; --ink:#1F1E1A; --ink-2:#55524A; --ink-3:#8A877D;
+  --line:#E4E0D5; --line-2:#EEEAE0; --header:#1F1E1A;
+  --accent:#B05A3C; --accent-soft:#F4E4DC; --late:#A33A4A; --late-soft:#F6E1E4; --ok:#3E6B52; --ok-soft:#E2EEE6;
+  --s-todo:#9A968B; --s-prog:#3F6E8C; --s-review:#C08A2E; --s-word:#7A5C99; --s-blocked:#A33A4A;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  --r:14px; --r-sm:10px; --gap:20px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.45}
+button{font:inherit;cursor:pointer;color:inherit}
+a{color:var(--accent)}
+/* prototype bar */
+.proto{background:#2B2A25;color:#D9D5CA;font-size:12.5px;padding:8px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.proto b{color:#fff;font-weight:600}
+.seg{display:inline-flex;background:#3A3832;border-radius:999px;padding:2px}
+.seg button{border:0;background:transparent;color:#D9D5CA;padding:4px 11px;border-radius:999px;font-size:12.5px}
+.seg button.on{background:#F6F4EE;color:var(--ink)}
+.proto .note{margin-left:auto;opacity:.75}
+/* app header */
+header.app{background:var(--header);color:#fff;display:flex;align-items:center;gap:28px;padding:0 28px;height:60px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:21px;font-weight:600}
+.logo i{width:30px;height:30px;border-radius:8px;background:#F4E4DC;display:grid;place-items:center}
+nav.main{display:flex;gap:4px}
+nav.main button{background:transparent;border:0;color:#BDB9AE;padding:8px 12px;border-radius:8px}
+nav.main button.on{color:#fff;background:#34322C}
+.who{margin-left:auto;color:#BDB9AE;font-size:13px}
+/* page */
+.wrap{max-width:1240px;margin:0 auto;padding:28px 28px 60px}
+h1{font-family:var(--serif);font-weight:600;font-size:34px;line-height:1.15;margin:0 0 6px;letter-spacing:-.01em}
+.sub{color:var(--ink-2);margin:0 0 16px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.btn{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 16px;font-weight:500}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.plan{display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 18px;margin-bottom:var(--gap)}
+.plan b{font-family:var(--serif);font-size:17px;font-weight:600}
+.plan span{color:var(--ink-3)}
+.plan a{margin-left:auto;font-weight:600;text-decoration:none}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:var(--gap);align-items:start}
+/* stat cards */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:var(--gap)}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;text-align:left;transition:border-color .15s;color:var(--ink);display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;height:100%;-webkit-appearance:none;appearance:none}
+.stat:hover{border-color:var(--ink-3)}
+.stat .n{font-family:var(--serif);font-size:44px;font-weight:600;line-height:1;margin-bottom:8px}
+.stat .l{font-weight:600;color:var(--ink)}
+.stat .d{color:var(--ink-3);font-size:12.5px}
+.stat.late .n{color:var(--late)} .stat.soon .n{color:var(--accent)} .stat.zero .n{color:var(--ink-3)}
+/* sections */
+.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--r);margin-bottom:var(--gap);overflow:hidden}
+.sec-h{display:flex;align-items:baseline;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line-2);cursor:pointer;user-select:none}
+.sec-h h2{font-family:var(--serif);font-size:19px;font-weight:600;margin:0}
+.sec-h .count{color:var(--ink-3)}
+.sec-h .why{color:var(--ink-3);font-size:12.5px}
+.sec-h .pill-late{color:var(--late);font-size:12.5px;font-weight:600}
+.sec-h .tog{margin-left:auto;color:var(--ink-3);font-size:12.5px}
+.sec.closed .sec-b{display:none}
+.group{padding:10px 18px 4px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600;background:var(--card-2);border-bottom:1px solid var(--line-2)}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto auto auto;gap:12px;align-items:center;padding:11px 18px;border-bottom:1px solid var(--line-2);cursor:pointer}
+.row:hover{background:var(--card-2)}
+.row:last-child{border-bottom:0}
+.row .t{font-weight:500}
+.row .m{color:var(--ink-3);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.st{font-size:12px;padding:2px 9px;border-radius:999px;white-space:nowrap;border:1px solid transparent}
+.pr{font-size:11px;font-weight:700;letter-spacing:.05em;color:var(--ink-3);min-width:56px;text-align:right}
+.pr.URGENT{color:var(--late)} .pr.HIGH{color:var(--accent)}
+.due{font-size:12.5px;white-space:nowrap;color:var(--ink-2);min-width:96px;text-align:right}
+.due.late{color:var(--late);font-weight:600} .due.today{color:var(--accent);font-weight:600}
+.row.sub{grid-template-columns:minmax(0,1fr) auto auto}
+.empty{padding:22px 18px;color:var(--ink-3);text-align:center}
+.more{display:block;width:100%;border:0;background:transparent;color:var(--accent);padding:10px;font-weight:600;border-top:1px solid var(--line-2)}
+.paused{color:var(--ink-3);font-size:13px;padding:4px 2px}
+/* rail */
+.rail .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:var(--gap)}
+.rail h3{font-family:var(--serif);font-size:17px;font-weight:600;margin:0 0 10px}
+.donut-wrap{display:flex;gap:16px;align-items:center}
+.legend{list-style:none;margin:0;padding:0;flex:1}
+.legend li{display:flex;align-items:center;gap:8px;padding:3px 0;font-size:13px;cursor:pointer;border-radius:6px}
+.legend li:hover{background:var(--card-2)}
+.legend i{width:10px;height:10px;border-radius:3px;display:inline-block}
+.legend b{margin-left:auto;font-weight:600}
+.donut-foot{margin-top:10px;padding-top:10px;border-top:1px solid var(--line-2);font-size:12.5px;color:var(--ink-2)}
+.donut-foot .late{color:var(--late);font-weight:600}
+.att{list-style:none;margin:0;padding:0}
+.att li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--line-2);cursor:pointer}
+.att li:last-child{border-bottom:0}
+.att .ic{width:26px;height:26px;border-radius:7px;background:var(--card-2);display:grid;place-items:center;color:var(--ink-2);font-size:13px}
+.att .tx{flex:1}
+.att .tx div{font-weight:500}
+.att .tx span{color:var(--ink-3);font-size:12px}
+.att .n{font-family:var(--serif);font-size:19px;font-weight:600}
+.att .n.zero{color:var(--ink-3)}
+.later{border:1.5px dashed var(--line)!important;background:transparent!important;color:var(--ink-3)}
+.later h3{color:var(--ink-3)}
+.tag{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--line-2);color:var(--ink-3);padding:2px 7px;border-radius:5px;margin-bottom:8px}
+.later p{margin:0;font-size:13px}
+.role-links a{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line-2);text-decoration:none;color:var(--ink)}
+.role-links a:last-child{border-bottom:0}
+.role-links a span{margin-left:auto;color:var(--accent)}
+.role-title{color:var(--ink-3);font-size:12.5px;margin:-6px 0 6px}
+.sample{border-color:#E7C9BB!important}
+.tag-sample{background:var(--accent-soft);color:var(--accent)}
+.focus{margin:0;padding-left:20px}
+.focus li{padding:8px 0;border-bottom:1px solid var(--line-2)}
+.focus li::marker{font-family:var(--serif);font-weight:600;color:var(--accent)}
+.ft{display:flex;gap:8px;align-items:baseline;font-weight:600}
+.ft em{margin-left:auto;font-style:normal;font-size:12px;color:var(--accent);white-space:nowrap}
+.ft em.late{color:var(--late)}
+.fexp{background:var(--card-2);border-left:3px solid var(--accent);border-radius:6px;padding:9px 11px;font-size:12.5px;color:var(--ink-2);margin:0 0 6px}
+.fexp b{color:var(--ink)}
+.fw{color:var(--ink-2);font-size:13px;margin-top:2px}
+.flater{font-size:12.5px;color:var(--ink-2);margin:10px 0 0}
+.fsrc{font-size:11.5px;color:var(--ink-3);margin:8px 0 0}
+.ind{padding:9px 0;border-bottom:1px solid var(--line-2)}
+.il{display:flex;gap:8px;align-items:baseline;font-size:13px}
+.il b{margin-left:auto;font-family:var(--serif);font-size:20px;white-space:nowrap}
+.il small{font-family:var(--sans);font-size:12px;color:var(--ink-3);font-weight:400}
+.bar{height:6px;background:var(--line-2);border-radius:99px;margin:6px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px}
+.in{font-size:11.5px;color:var(--ink-3)}
+.datenote{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;margin:0 0 8px}
+.temp-h{display:flex;align-items:center;gap:8px}
+.temp-h h3{margin:0}
+.temp-pill{margin-left:auto;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.temp-read{font-family:var(--serif);font-size:30px;font-weight:600;line-height:1.1;margin:10px 0 2px}
+.temp-why{font-size:12.5px;color:var(--ink-2);margin-bottom:12px}
+.temp-key{display:flex;flex-direction:column;gap:3px;margin-top:10px;font-size:11.5px;color:var(--ink-3)}
+.temp-key i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}
+.fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.fcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px;text-align:left;color:var(--ink);display:flex;flex-direction:column;align-items:flex-start;-webkit-appearance:none;appearance:none;transition:all .15s;position:relative}
+.fcard:hover{border-color:var(--ink-3);transform:translateY(-1px)}
+.fcard .n{font-family:var(--serif);font-size:36px;font-weight:600;line-height:1;margin-bottom:6px}
+.fcard .l{font-weight:600;font-size:13.5px;line-height:1.25}
+.fcard .d{color:var(--ink-3);font-size:11.5px;margin-top:2px;line-height:1.3}
+.t-late .n{color:var(--late)} .t-accent .n{color:var(--accent)} .t-word .n{color:var(--s-word)} .t-review .n{color:var(--s-review)} .t-plain .n{color:var(--ink)}
+.fcard.on{border-color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset;background:#fff}
+.fcard.on::after{content:"Filtering ✕";position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;letter-spacing:.04em;color:var(--ink-3)}
+.fbar{display:flex;align-items:center;gap:6px;background:var(--ink);color:#fff;border-radius:var(--r-sm);padding:9px 14px;margin-bottom:var(--gap);font-size:13px}
+.fbar button{margin-left:auto;background:#fff;color:var(--ink);border:0;border-radius:999px;padding:4px 12px;font-weight:600;font-size:12.5px}
+.fclear{background:var(--ok-soft);color:var(--ok);border-radius:var(--r);padding:14px 18px;font-weight:600;margin-bottom:var(--gap)}
+.fcards + .sec, .fcards + section{margin-top:8px}
+.toprow{display:flex;align-items:flex-start;gap:20px}
+.toprow h1{flex:1}
+.avail-wrap{position:relative;flex:none;margin-top:4px}
+.avail{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:600;color:var(--ink)}
+.avail i{width:12px;height:12px;border-radius:50%;box-shadow:0 0 0 4px var(--line-2)}
+.avail span{color:var(--ink-3);font-size:11px}
+.avail[aria-expanded="true"]{border-color:var(--ink)}
+.pop{position:absolute;top:calc(100% + 12px);right:0;width:400px;max-width:calc(100vw - 32px);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--ok);border-radius:var(--r);box-shadow:0 18px 40px rgba(31,30,26,.18);z-index:20;font-size:13px}
+.pop-caret{position:absolute;top:-11px;right:28px;width:14px;height:14px;background:var(--ok);transform:rotate(45deg);border-radius:2px}
+.pop-h{display:flex;align-items:center;gap:8px;padding:14px 16px;border-bottom:1px solid var(--line-2);position:relative;background:var(--card);border-radius:var(--r) var(--r) 0 0}
+.pop-h b{font-family:var(--serif);font-size:18px}
+.pop-h em{margin-left:auto;font-style:normal;color:var(--ink-3);font-size:12px}
+.pop-x{border:0;background:transparent;color:var(--ink-2);font-size:14px}
+.pop-s{padding:14px 16px;border-bottom:1px solid var(--line-2)}
+.pop-now{display:flex;gap:12px;align-items:flex-start}
+.pop-now i{width:14px;height:14px;border-radius:50%;margin-top:8px;box-shadow:0 0 0 4px var(--line-2)}
+.pop-big{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.1}
+.pop-sub{color:var(--ink-2)}
+.pop-sees{margin:10px 0 12px 26px;color:var(--ink-2)}
+.pop-sees span{background:var(--accent-soft);color:var(--accent);font-weight:600;padding:3px 9px;border-radius:999px;margin-left:4px}
+.pop-seg{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden}
+.pop-seg button{border:0;border-right:1px solid var(--line);background:transparent;padding:9px 6px;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--ink);font-weight:500}
+.pop-seg button:last-child{border-right:0}
+.pop-seg button.on{background:var(--card-2);box-shadow:inset 0 -3px 0 var(--accent);font-weight:600}
+.pop-seg i{width:8px;height:8px;border-radius:50%}
+.pop-sec{padding:12px 16px;border-bottom:1px solid var(--line-2)}
+.pop-sec:last-child{border-bottom:0}
+.pop-sec p{margin:6px 0 0;color:var(--ink-2)}
+.pop-lab{font-size:11px;font-weight:700;letter-spacing:.07em;color:var(--ink-3)}
+.pop-row{display:flex;align-items:center}
+.pop-row a,.pop-row2 a{margin-left:auto;font-weight:600}
+.pop-row2{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.pop-row2:last-child{border-bottom:0}
+.pop-k{color:var(--ink-3);font-size:12px}
+body.phone .toprow{flex-direction:column;gap:8px}
+body.phone .pop{right:auto;left:0;width:340px}
+body.phone .pop-caret{right:auto;left:28px}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(31,30,26,.35);display:none;z-index:10}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--card);z-index:11;transform:translateX(100%);transition:transform .2s;padding:24px;overflow:auto;box-shadow:-10px 0 30px rgba(0,0,0,.1)}
+.open .scrim{display:block} .open .drawer{transform:none}
+.drawer h2{font-family:var(--serif);font-size:22px;margin:6px 0 12px;font-weight:600}
+.drawer dl{display:grid;grid-template-columns:110px 1fr;gap:8px;margin:0 0 18px}
+.drawer dt{color:var(--ink-3)} .drawer dd{margin:0}
+.drawer .x{float:right;border:0;background:var(--card-2);border-radius:8px;padding:4px 10px}
+.drawer .hint{background:var(--card-2);border-radius:var(--r-sm);padding:12px;color:var(--ink-2);font-size:13px}
+.placeholder{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:40px;text-align:center;color:var(--ink-3)}
+/* phone */
+body.phone .stage{max-width:390px;margin:20px auto;border:10px solid #2B2A25;border-radius:34px;overflow:hidden;background:var(--bg)}
+body.phone header.app{padding:0 16px;gap:12px} body.phone nav.main,body.phone .who{display:none}
+body.phone .wrap{padding:18px 14px 40px}
+body.phone h1{font-size:25px}
+body.phone .grid{display:flex;flex-direction:column;gap:0;align-items:stretch}
+body.phone .grid > *{width:100%}
+body.phone .stats{grid-template-columns:1fr 1fr}
+body.phone .fcards{grid-template-columns:1fr 1fr}
+body.phone .stat .n{font-size:36px}
+body.phone .left,body.phone .rail{display:contents}
+body.phone .o-stats{order:1} body.phone .o-donut{order:2} body.phone .o-ai{order:3} body.phone .o-ind{order:4}
+body.phone .o-client{order:5} body.phone .o-wait{order:6} body.phone .o-own{order:7}
+body.phone .o-paused{order:8} body.phone .o-role{order:9}
+body.phone .row{grid-template-columns:minmax(0,1fr) auto;row-gap:4px}
+body.phone .row .pr{display:none}
+body.phone .row .st{grid-column:1;justify-self:start}
+body.phone .sec-h .why{display:none}
+body.phone .row .due{grid-row:1;grid-column:2}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div class="proto">
+  <b>Prototype</b>
+  <span>View as</span>
+  <div class="seg" id="persona"></div>
+  <div class="seg" id="device"><button data-d="desktop" class="on">Desktop</button><button data-d="phone">Phone</button></div>
+  <span class="note">A picture you can click. Nothing saves; names are NUCO's, numbers are made up.</span>
+</div>
+
+<div class="stage">
+<header class="app">
+  <div class="logo"><i><svg width="18" height="18" viewBox="0 0 24 24"><path d="M2 13h5l2-6 4 12 3-9 2 3h4" fill="none" stroke="#B05A3C" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Pulse</div>
+  <nav class="main" id="nav">
+    <button class="on" data-s="mywork">My work</button><button data-s="projects">Projects</button><button data-s="heartbeat">Heartbeat</button><button data-s="vitals">Vitals</button><button data-s="team">Team &amp; roles</button>
+  </nav>
+  <div class="who" id="who"></div>
+</header>
+
+<div class="wrap" id="screen"></div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer"></aside>
+
+<script>
+let BASE = new Date(2026,10,18); // set per person in render()
+const MON = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function dueText(o){ if(o===null||o===undefined) return {txt:"no date",cls:""};
+  const d=new Date(BASE); d.setDate(d.getDate()+o); const s=MON[d.getMonth()]+" "+d.getDate();
+  if(o<0) return {txt:s+" · "+(-o)+"d late",cls:"late"}; if(o===0) return {txt:"Today",cls:"today"}; if(o===1) return {txt:"Tomorrow",cls:""}; return {txt:s,cls:""}; }
+const STATUS = {
+  "To do":{c:"var(--s-todo)"}, "In progress":{c:"var(--s-prog)"}, "Review":{c:"var(--s-review)"},
+  "Needs a word":{c:"var(--s-word)"}, "Blocked":{c:"var(--s-blocked)"}
+};
+const PRI_RANK={URGENT:0,HIGH:1,MEDIUM:2,LOW:3};
+
+/* ---------- sample people ---------- */
+const PEOPLE = {
+ paisha:{ name:"Paisha", role:"VP of Sales", hello:"Good morning Paisha.", base:[2027,0,13],
+  dateNote:"Sample week: Wed Jan 13, 2027, week 6 of Paisha's transition period",
+  client:[
+   {t:"Join Marcus on Harbor Lane Bakery 30-day Scoreboard call", client:"Harbor Lane Bakery", project:"Harbor Lane Bakery Marketing Scoreboard", s:"In progress", p:"HIGH", o:1},
+   {t:"Ride along: Dana's first Be Visible pitch", client:"Ridgeline Cycles", project:"CLIENT - Ridgeline Cycles - Social Media Management", s:"To do", p:"MEDIUM", o:2}
+  ],
+  waiting:[
+   {t:"Approve Dana's Be Visible pitch script edits", owner:"Dana (Champion, Vista)", task:"Prep Be Visible pitch for Ridgeline Cycles", project:"Champion · Vista", o:-2},
+   {t:"Send the Vista launch date so flyers can print", owner:"Laura", task:"Order Vista flyers and window decals", project:"City launch · Vista", o:0},
+   {t:"Confirm which Champion hosts the February networking event", owner:"Dave", task:"Book February networking venue", project:"Sales Program", o:3}
+  ],
+  own:[
+   {t:"Run Marcus's day-30 review (Fallbrook)", project:"Champion onboarding · Marcus (Fallbrook)", s:"In progress", p:"HIGH", o:0},
+   {t:"Call back 2 Champion candidates for Vista", project:"Champion recruiting · North County", s:"To do", p:"URGENT", o:0},
+   {t:"Set your success numbers with Dave", project:"VP of Sales onboarding", s:"Needs a word", p:"HIGH", o:-3},
+   {t:"Draft the Oceanside launch plan for Dave", project:"City expansion plan 2027", s:"To do", p:"MEDIUM", o:6, still:true},
+   {t:"Book a Regus room for Champion training day", project:"Champion onboarding · Cohort 2", s:"To do", p:"LOW", o:9}
+  ],
+  ownSubs:[{t:"List the 3 questions every new Champion asks in week 1", task:"Draft Champion week-1 FAQ", o:4}],
+  att:{}, paused:0,
+  focus:[
+   {t:"Run Marcus's day-30 review (Fallbrook)", when:"Today", why:"<b>Track results.</b> His day-30 review is due today. He's at 14 of 20 new clients, so spend the review on closing the gap."},
+   {t:"Approve Dana's pitch script edits", when:"2 days late", why:"<b>Support Champions directly.</b> Dana is waiting on you and pitches Ridgeline Cycles on Friday."},
+   {t:"Call back the 2 Vista Champion candidates", when:"Today", why:"<b>Grow the Champion team.</b> Vista can't get a launch date until a Champion is signed, and Laura needs that date today to print flyers."}
+  ],
+  focusLater:"Can wait until next week: the Oceanside launch plan and the Regus booking.",
+  indicators:[
+   {l:"Champions active", v:3, goal:5, by:"Mar 7"},
+   {l:"Cities launched", v:2, goal:3, by:"Mar 7", note:"Fallbrook, Vista"},
+   {l:"New clients this month (team)", v:31, goal:60, by:"Jan 31", note:"20 per Champion"},
+   {l:"Champions on pace for their day-90 target", v:2, goal:3, by:"now"},
+   {l:"Sales team net commissions, month to date", money:6420}
+  ]
+ },
+ laura:{ name:"Laura", role:"Operations Lead", hello:"Good morning Laura.",
+  client:[
+   {t:"Send Oakline Wellness the December content plan for approval", client:"Oakline Wellness", project:"CLIENT - Oakline Wellness - Social Media Marketing", s:"Review", p:"HIGH", o:-4},
+   {t:"Invoice Ridgeline Cycles for November retainer", client:"Ridgeline Cycles", project:"CLIENT - Ridgeline Cycles - Website Management", s:"To do", p:"URGENT", o:0},
+   {t:"Schedule 60-day Scoreboard review call", client:"Harbor Lane Bakery", project:"Harbor Lane Bakery Marketing Scoreboard", s:"To do", p:"MEDIUM", o:6},
+   {t:"Collect studio listing links from Owen", client:"Mesa Light Studio", project:"Studio Rental Marketing — Case Study", s:"Blocked", p:"HIGH", o:-9, still:true}
+  ],
+  waiting:[
+   {t:"Approve the venue data sheet columns", owner:"Muiz", task:"Build a \"Spaces\" database for San Diego County", project:"What's Next - Spaces", o:-30},
+   {t:"Send payroll hours for Oct 16–31", owner:"Dave", task:"Process payroll EOM", project:"Payroll EOM", o:-3},
+   {t:"Review the new onboarding SOP draft", owner:"Dennis", task:"Create Process and SOP for Product/App Build", project:"Create Process and SOP for Product/App Build for NUCO", o:4}
+  ],
+  own:[
+   {t:"Upload monthly venue contact sheet to GHL", project:"What's Next - Spaces", s:"In progress", p:"HIGH", o:-1, done:true},
+   {t:"Reconcile Mercury card receipts", project:"Mercury Banking Setup & Financial Controls", s:"To do", p:"MEDIUM", o:2},
+   {t:"Update team calendar booking links", project:"COMPANY - Setup Tools", s:"Needs a word", p:"MEDIUM", o:null, still:true}
+  ],
+  ownSubs:[{t:"Export October receipts from Mercury", task:"Reconcile Mercury card receipts", o:1},{t:"Match receipts to QuickBooks", task:"Reconcile Mercury card receipts", o:2}],
+  att:{review:2, word:1, upd:3, done:1, time:0, still:4}, paused:2
+ },
+ dave:{ name:"Dave", role:"Founder", hello:"Good evening Dave.",
+  client:[
+   {t:"Create videos from filmed content", client:"Ridgeline Cycles", project:"CLIENT - Ridgeline Cycles - Social Media Management", s:"In progress", p:"HIGH", o:-68},
+   {t:"Get available frame colors from Rob and send to Muiz", client:"Ridgeline Cycles", project:"CLIENT - Website Update/ Build - Ridgeline Cycles", s:"To do", p:"HIGH", o:-43, still:true},
+   {t:"Create videos from filmed content", client:"Oakline Wellness", project:"CLIENT - Oakline Wellness - Social Media Marketing", s:"In progress", p:"HIGH", o:-66},
+   {t:"Email Tess with newsletter/flyer fixes", client:"Oakline Wellness", project:"CLIENT - Oakline Wellness - Email Campaign for New Group Contacts", s:"To do", p:"HIGH", o:-21},
+   {t:"Get product info from Tess for Flower products", client:"Oakline Wellness", project:"CLIENT - Oakline Wellness - Website Management", s:"To do", p:"HIGH", o:-64},
+   {t:"Send first Scoreboard", client:"Harbor Lane Bakery", project:"Harbor Lane Bakery Marketing Scoreboard", s:"Needs a word", p:"HIGH", o:-41},
+   {t:"Send Peerspace/Gigster listing links for review", client:"Mesa Light Studio", project:"Studio Rental Marketing — Case Study", s:"To do", p:"HIGH", o:-2}
+  ],
+  waiting:[
+   {t:"Create calendars in GHL for booking links", owner:"Muiz", task:"Review GHL calendars for team members", project:"Pulse — Agency PM Platform", o:-43},
+   {t:"Post the event page link here", owner:"Muiz", task:"Test same-prompt verification for turnaround time", project:"PRODUCT - AI Visible", o:-43},
+   {t:"Set up monthly data-sheet upload to GHL", owner:"Laura", task:"Build a \"Spaces\" database for San Diego County", project:"What's Next - Spaces", o:-30}
+  ],
+  own:[
+   {t:"Upgrade Vercel account to Pro plan", project:"PRODUCT - AI Visible", s:"To do", p:"URGENT", o:-45, still:true},
+   {t:"Process contractor payment for Muiz", project:"Mercury Banking Setup & Financial Controls", s:"To do", p:"URGENT", o:-29, done:true},
+   {t:"Set up Upstream streaming pipeline", project:"What's Next TV — Video Production", s:"To do", p:"URGENT", o:0},
+   {t:"Film Thursday and Sunday shoots in ProRes", project:"What's Next TV — Video Production", s:"To do", p:"URGENT", o:1},
+   {t:"Set up the Slack app so Pulse can receive messages", project:"Pulse — Agency PM Platform", s:"Needs a word", p:"HIGH", o:-2},
+   {t:"Compile target hit list and co-draft outreach plan", project:"EventCon - AI Agent + Whatsnap.ai", s:"To do", p:"HIGH", o:2},
+   {t:"Review contractor contract and schedule sign-off", project:"Admin - Vendor Contracts", s:"To do", p:"LOW", o:21}
+  ],
+  ownSubs:[{t:"Copy the Signing Secret and send it to Muiz by password share", task:"Set up the Slack app so Pulse can receive messages", o:null}],
+  att:{review:7, word:9, upd:38, done:1, time:1, still:74}, paused:22
+ }
+};
+const ORDER=["paisha","laura","dave"];
+let who="paisha", screen="mywork", closed={}, filter=null;
+
+/* ---------- helpers ---------- */
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function sortTasks(a){return a.slice().sort((x,y)=>{
+  const b=(y.s==="Blocked")-(x.s==="Blocked"); if(b) return b;
+  const p=(PRI_RANK[x.p]??9)-(PRI_RANK[y.p]??9); if(p) return p;
+  return (x.o??999)-(y.o??999);});}
+function stPill(s){const c=STATUS[s].c;return `<span class="st" style="color:${c};border-color:${c}33;background:${c}14">${s}</span>`}
+function taskRow(x,kind,i){const d=dueText(x.o);
+  return `<div class="row" data-k="${kind}" data-i="${i}"><div><div class="t">${esc(x.t)}</div><div class="m">${esc(x.project)}</div></div>${stPill(x.s)}<div class="pr ${x.p}">${x.p}</div><div class="due ${d.cls}">${d.txt}</div></div>`}
+function subRow(x,kind,i,line){const d=dueText(x.o);
+  return `<div class="row sub" data-k="${kind}" data-i="${i}"><div><div class="t">${esc(x.t)}</div><div class="m">${line}</div></div><div class="due ${d.cls}">${d.txt}</div><div></div></div>`}
+function lateCount(a){return a.filter(x=>x.o!==null&&x.o<0).length}
+
+/* ---------- donut ---------- */
+function donut(counts,total){
+  const R=48,C=2*Math.PI*R; let off=0, segs="";
+  Object.keys(STATUS).forEach(k=>{const n=counts[k]||0; if(!n) return; const len=C*n/total;
+    segs+=`<circle r="${R}" cx="60" cy="60" fill="none" stroke="${STATUS[k].c}" stroke-width="16" stroke-dasharray="${len} ${C-len}" stroke-dashoffset="${-off}" transform="rotate(-90 60 60)"/>`; off+=len;});
+  return `<svg width="120" height="120" viewBox="0 0 120 120" aria-label="Task status mix"><circle r="${R}" cx="60" cy="60" fill="none" stroke="var(--line-2)" stroke-width="16"/>${segs}<text x="60" y="58" text-anchor="middle" font-family="Georgia,serif" font-size="26" font-weight="600" fill="var(--ink)">${total}</text><text x="60" y="76" text-anchor="middle" font-size="11" fill="var(--ink-3)">open tasks</text></svg>`;
+}
+
+
+function aiCard(P){
+  if(!P.focus) return `<div class="card later o-ai"><span class="tag">Coming next · testing first</span><h3>Your focus today</h3><p>An AI pick of what to do first today, from your tasks and your role's SOP. Not built yet: we're testing it with 2–3 people first.</p></div>`;
+  return `<div class="card o-ai sample"><span class="tag tag-sample">Sample · shows how it will work</span><h3>Your focus today</h3>
+   <div class="fexp"><b>How this works:</b> each morning, AI reads your open tasks, what teammates are waiting on you for, and your role's job description and SOP. It picks the three things that will do the most for your role's results today, and tells you which responsibility each one serves and why it matters now. It's a suggestion, not an assignment: you decide your day, and nothing changes in your tasks.</div>
+   <ol class="focus">${P.focus.map(f=>`<li><div class="ft"><span>${esc(f.t)}</span><em class="${/late/.test(f.when)?"late":""}">${f.when}</em></div><div class="fw">${f.why}</div></li>`).join("")}</ol>
+   <p class="flater">${P.focusLater}</p>
+   <p class="fsrc">Picked from your open tasks and the VP of Sales job description. Refreshed each morning.</p></div>`;
+}
+function indCard(P){
+  if(!P.indicators) return `<div class="card later o-ind"><span class="tag">Coming next · needs role results</span><h3>How your role is tracking</h3><p>Indicator cards for your job. They arrive once each role has its own results project, so the numbers are real.</p></div>`;
+  return `<div class="card o-ind sample"><span class="tag tag-sample">Sample · goals not set yet</span><h3>How your role is tracking</h3>
+   ${P.indicators.map(i=>{ if(i.money!==undefined) return `<div class="ind"><div class="il"><span>${i.l}</span><b>$${i.money.toLocaleString()}</b></div><div class="in">Your monthly bonus is 5% of this at full time</div></div>`;
+     const pct=Math.min(100,Math.round(i.v/i.goal*100));
+     return `<div class="ind"><div class="il"><span>${i.l}</span><b>${i.v} <small>of ${i.goal}</small></b></div><div class="bar"><i style="width:${pct}%;background:${pct>=100?"var(--ok)":pct>=60?"var(--accent)":"var(--late)"}"></i></div><div class="in">${i.note?i.note+" · ":""}goal by ${i.by}</div></div>`}).join("")}
+   <p class="fsrc">From the success numbers in the VP of Sales job description. Goals are examples until Paisha and Dave set them at field training.</p></div>`;
+}
+
+
+function tempCard(P,tasks,counts,late,soon){
+  const wl=lateCount(P.waiting), allLate=late+wl, all=tasks.length+P.waiting.length, blocked=counts["Blocked"]||0;
+  const share=all?allLate/all:0;
+  let r;
+  if(blocked||share>=0.25) r={k:"Hot",c:"var(--late)",bg:"var(--late-soft)",msg:blocked?"Unblock that first, then the oldest late items.":"Start with the oldest late items and what others are waiting on."};
+  else if(allLate||(counts["Needs a word"]||0)) r={k:"Warm",c:"var(--s-review)",bg:"#F6ECD9",msg:"A few things slipping. Catch them today."};
+  else r={k:"Cool",c:"var(--ok)",bg:"var(--ok-soft)",msg:"Everything on time. Keep it there."};
+  const why=[allLate?`${allLate} late${wl?` (${wl} that others are waiting on)`:""}`:"nothing late", blocked?`${blocked} blocked`:"nothing blocked"].join(" · ");
+  return `<div class="card o-donut temp" style="border-top:4px solid ${r.c}">
+   <div class="temp-h"><h3>Your temp gauge</h3><span class="temp-pill" style="color:${r.c};background:${r.bg}">${r.k}</span></div>
+   <div class="temp-read" style="color:${r.c}">${r.k === "Hot" ? "Running hot" : r.k === "Warm" ? "Running warm" : "Running cool"}</div>
+   <div class="temp-why">${why}. ${r.msg}</div>
+   <div class="donut-wrap">${donut(counts,tasks.length)}<ul class="legend">${Object.keys(STATUS).map(k=>`<li data-st="${k}"><i style="background:${STATUS[k].c}"></i>${k}<b>${counts[k]||0}</b></li>`).join("")}</ul></div>
+   <div class="donut-foot">${soon} due in the next 7 days</div>
+   <div class="temp-key"><span><i style="background:var(--ok)"></i>Cool: nothing late or blocked</span><span><i style="background:var(--s-review)"></i>Warm: some late, under 1 in 4</span><span><i style="background:var(--late)"></i>Hot: anything blocked, or 1 in 4+ late</span></div>
+  </div>`;
+}
+
+
+const AV={"Active":{c:"var(--ok)",sub:"here and reachable"},"In meetings":{c:"#9A7A2E",sub:"in meetings, slower to reply"},"Away":{c:"var(--ink-3)",sub:"away, not taking new work"}};
+let avail={paisha:"Active",laura:"In meetings",dave:"Active"}, availOpen=false;
+const TEAMSEES={paisha:"Out in the field · Champion reviews",laura:"Heads-down · month-end",dave:"Heads-down · multiple projects"};
+function availPop(P){
+  const a=avail[who];
+  return `<div class="pop" role="dialog" aria-label="Availability" style="border-top-color:${AV[a].c}"><div class="pop-caret" style="background:${AV[a].c}"></div>
+   <div class="pop-h"><span>◐</span><b>Availability</b><em>seen on Heartbeat</em><button class="pop-x" data-avail-close>✕</button></div>
+   <div class="pop-s"><div class="pop-now"><i style="background:${AV[a].c}"></i><div><div class="pop-big">${a}</div><div class="pop-sub">${AV[a].sub}</div></div></div>
+    <div class="pop-sees">Team sees <span>${TEAMSEES[who]}</span></div>
+    <div class="pop-seg">${Object.keys(AV).map(k=>`<button data-avail="${k}" class="${k===a?"on":""}"><i style="background:${AV[k].c}"></i>${k}</button>`).join("")}</div></div>
+   <div class="pop-sec"><div class="pop-row"><span class="pop-lab">TIME OFF BOOKED</span><a href="#" onclick="return false">+ Add time off</a></div>
+    <p>Nothing booked. Add as many trips as you like. Each one starts and ends by itself.</p></div>
+   <div class="pop-sec"><span class="pop-lab">YOUR DAY</span>
+    <div class="pop-row2"><div><div class="pop-k">Remind me</div><b>4:00 PM</b><div class="pop-k">weekdays, America/Los_Angeles</div></div><a href="#" onclick="return false">Change</a></div>
+    <div class="pop-row2"><div><div class="pop-k">Taking work</div><b>2 urgent · 5 high · 6 due soon</b><div class="pop-k">the default limits · whoever assigns you sees them</div></div><a href="#" onclick="return false">Change</a></div></div>
+  </div>`;
+}
+
+/* ---------- render ---------- */
+function render(){
+  const P=PEOPLE[who];
+  BASE=P.base?new Date(...P.base):new Date(2026,10,18);
+  document.getElementById("who").textContent=P.name+" · "+P.role;
+  document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.s===screen));
+  const el=document.getElementById("screen");
+  if(screen!=="mywork"){ el.innerHTML=`<div class="placeholder"><h2 style="font-family:var(--serif);color:var(--ink)">${document.querySelector('#nav button.on').textContent}</h2>Not part of this change. Only My work is being redesigned.<br><br><button class="btn" onclick="go('mywork')">Back to My work</button></div>`; return;}
+
+  const tasks=[...P.client,...P.own];
+  const late=lateCount(tasks), soon=tasks.filter(x=>x.o!==null&&x.o>=0&&x.o<=7).length;
+  const clientProjects=new Set(P.client.map(x=>x.project)).size;
+  const waitLate=lateCount(P.waiting);
+  const counts={}; tasks.forEach(x=>counts[x.s]=(counts[x.s]||0)+1);
+
+  // filter cards: only those with open items
+  const F=[
+   {id:"blocked",l:"Blocked",d:"Stuck until someone acts",tone:"late",pred:(x,k)=>x.s==="Blocked"},
+   {id:"late",l:"Late",d:"Past their due date",tone:"late",pred:(x,k)=>x.o!=null&&x.o<0},
+   {id:"waiting",l:"Others waiting on you",d:"The task stays theirs",tone:"accent",pred:(x,k)=>k==="wait"},
+   {id:"today",l:"Due today",d:"On today's list",tone:"accent",pred:(x,k)=>x.o===0},
+   {id:"word",l:"Needs a word",d:"Someone asked to talk",tone:"word",pred:(x,k)=>x.s==="Needs a word"},
+   {id:"review",l:"For your review",d:"Sent to you to check",tone:"review",pred:(x,k)=>x.s==="Review"},
+   {id:"week",l:"Due in 7 days",d:"Coming up this week",tone:"plain",pred:(x,k)=>x.o!=null&&x.o>=0&&x.o<=7},
+   {id:"done",l:"Is it done?",d:"Every subtask ticked, task still open",tone:"plain",pred:(x,k)=>!!x.done},
+   {id:"still",l:"Sitting still",d:"Nothing moved in 7+ days",tone:"plain",pred:(x,k)=>!!x.still}
+  ];
+  const lists=[["client",P.client],["wait",P.waiting],["own",P.own],["ownsub",P.ownSubs]];
+  F.forEach(f=>f.n=lists.reduce((s,[k,a])=>s+a.filter(x=>f.pred(x,k)).length,0));
+  const shown=F.filter(f=>f.n>0);
+  if(filter&&!shown.find(f=>f.id===filter)) filter=null;
+  const act=F.find(f=>f.id===filter);
+  const keep=(x,k)=>!act||act.pred(x,k);
+  const fc=P.client.filter(x=>keep(x,"client")), fw=P.waiting.filter(x=>keep(x,"wait")), fo=P.own.filter(x=>keep(x,"own")), fs=P.ownSubs.filter(x=>keep(x,"ownsub"));
+
+  const byClient={}; sortTasks(fc).forEach(x=>{(byClient[x.client]=byClient[x.client]||[]).push(x)});
+  let clientHtml="";
+  Object.keys(byClient).forEach(c=>{clientHtml+=`<div class="group">${esc(c)} · ${byClient[c].length}</div>`+byClient[c].map(x=>taskRow(x,"client",P.client.indexOf(x))).join("")});
+  if(!fc.length) clientHtml=`<div class="empty">No client work on your plate right now.</div>`;
+
+  const waitSorted=fw.slice().sort((a,b)=>(a.o??999)-(b.o??999));
+  let waitHtml=waitSorted.map(x=>subRow(x,"wait",P.waiting.indexOf(x),`on ${esc(x.owner)}’s task “${esc(x.task)}” · ${esc(x.project)}`)).join("");
+  if(!fw.length) waitHtml=`<div class="empty">Nobody is waiting on you. Nice.</div>`;
+
+  let ownHtml=sortTasks(fo).map(x=>taskRow(x,"own",P.own.indexOf(x))).join("");
+  if(fs.length) ownHtml+=`<div class="group">Subtasks on your own tasks · ${fs.length}</div>`+fs.map(x=>subRow(x,"ownsub",P.ownSubs.indexOf(x),`on your task “${esc(x.task)}”`)).join("");
+  if(!fo.length&&!fs.length) ownHtml=`<div class="empty">Nothing of your own open.</div>`;
+
+  const cardsHtml=shown.length?`<div class="fcards o-stats">${shown.map(f=>`<button class="fcard t-${f.tone} ${filter===f.id?"on":""}" data-filter="${f.id}"><div class="n">${f.n}</div><div class="l">${f.l}</div><div class="d">${f.d}</div></button>`).join("")}</div>`
+     :`<div class="fclear o-stats">All clear: nothing late, blocked or waiting on you.</div>`;
+  const barHtml=act?`<div class="fbar o-stats">Showing <b>${act.l}</b> · ${act.n} item${act.n>1?"s":""} <button data-filter="${act.id}">Show everything</button></div>`:"";
+  const A=P.att;
+  const att=[["◑","For your review","Sent to you to check",A.review],["◎","Needs a word","Someone asked to talk",A.word],["✎","Projects needing updates","Owed today",A.upd],["✓","Is it done?","Every subtask ticked, task still open",A.done],["◔","Say how long","A finished task has no time yet",A.time],["◷","Tasks sitting still","Nothing moved in 7+ days",A.still]];
+
+  const sec=(id,ord,title,count,why,lateN,body)=>(act&&!count)?"":`<section class="sec ${ord} ${closed[id]?"closed":""}" data-id="${id}"><div class="sec-h" data-tog="${id}"><h2>${title}</h2><span class="count">${count}</span>${lateN?`<span class="pill-late">${lateN} late</span>`:""}<span class="why">${why}</span><span class="tog">${closed[id]?"show":"collapse"}</span></div><div class="sec-b">${body}</div></section>`;
+
+  el.innerHTML=`
+  <div class="toprow"><h1>${P.hello} Here’s your work today.</h1>
+   <div class="avail-wrap"><button class="avail" id="availBtn" aria-expanded="${availOpen}"><i style="background:${AV[avail[who]].c}"></i>${avail[who]} <span>▾</span></button>
+   ${availOpen?availPop(P):""}</div></div>
+  ${P.dateNote?`<p class="datenote">${P.dateNote}</p>`:""}<p class="sub">${tasks.length} open tasks · ${P.waiting.length} subtasks others are waiting on · ${P.paused} paused</p>
+  <div class="actions"><button class="btn">+ New task</button><button class="btn">+ From template</button>${who==="dave"?`<button class="btn primary">+ New project</button>`:""}</div>
+  <div class="plan">◷ <b>Plan your week</b><span>· ${tasks.length} tasks</span><a href="#" onclick="return false">Plan now ▸</a></div>
+  <div class="grid">
+   <div class="left">
+    ${cardsHtml}
+    ${barHtml}
+    ${sec("client","o-client","Client work",fc.length,"for the clients we serve",lateCount(fc),clientHtml)}
+    ${sec("wait","o-wait","Others are waiting on you",fw.length,"the task stays theirs",lateCount(fw),waitHtml)}
+    ${sec("own","o-own","Your tasks",fo.length+fs.length,"internal and your own",lateCount(fo)+lateCount(fs),ownHtml)}
+    ${P.paused?`<div class="paused o-paused">⏸ ${P.paused} paused with on-hold projects · not counted above · <a href="#" onclick="return false">show</a></div>`:""}
+   </div>
+   <aside class="rail">
+    ${tempCard(P,tasks,counts,late,soon)}
+    ${aiCard(P)}
+    ${indCard(P)}
+    <div class="card role-links o-role"><h3>Your role</h3><div class="role-title">${P.role}</div>
+      <a href="https://teams.nuco.fyi/my-role/" target="_blank" rel="noopener">Job description, agreement, SOP and key responsibilities <span>→</span></a>
+      <p style="margin:8px 0 0;color:var(--ink-3);font-size:12px">Opens teams.nuco.fyi/my-role/ in a new tab · sign in there</p>
+    </div>
+   </aside>
+  </div>`;
+}
+
+/* ---------- interactions ---------- */
+function go(s){screen=s;render();}
+function openDrawer(k,i){
+  const P=PEOPLE[who]; let x, html;
+  if(k==="client"||k==="own"){x=(k==="client"?P.client:P.own)[i]; const d=dueText(x.o);
+    html=`<span class="tag">${k==="client"?"Client work · "+esc(x.client):"Your task"}</span><h2>${esc(x.t)}</h2><dl><dt>Project</dt><dd>${esc(x.project)}</dd><dt>Status</dt><dd>${stPill(x.s)}</dd><dt>Priority</dt><dd>${x.p}</dd><dt>Due</dt><dd class="due ${d.cls}" style="text-align:left">${d.txt}</dd></dl>`;}
+  else if(k==="wait"){x=P.waiting[i]; const d=dueText(x.o);
+    html=`<span class="tag">Someone is waiting on you</span><h2>${esc(x.t)}</h2><dl><dt>Asked by</dt><dd>${esc(x.owner)}</dd><dt>On their task</dt><dd>${esc(x.task)}</dd><dt>Project</dt><dd>${esc(x.project)}</dd><dt>Due</dt><dd class="due ${d.cls}" style="text-align:left">${d.txt}</dd></dl>`;}
+  else {x=P.ownSubs[i]; const d=dueText(x.o);
+    html=`<span class="tag">Subtask on your own task</span><h2>${esc(x.t)}</h2><dl><dt>On</dt><dd>${esc(x.task)}</dd><dt>Due</dt><dd class="due ${d.cls}" style="text-align:left">${d.txt}</dd></dl>`;}
+  document.getElementById("drawer").innerHTML=`<button class="x" onclick="closeDrawer()">Close</button>${html}<div class="hint">In Pulse this opens the task as it does today. Nothing about the task view changes.</div>`;
+  document.body.classList.add("open");
+}
+function closeDrawer(){document.body.classList.remove("open")}
+document.getElementById("scrim").onclick=closeDrawer;
+document.addEventListener("click",e=>{
+  const r=e.target.closest(".row"); if(r){openDrawer(r.dataset.k,+r.dataset.i);return;}
+  const t=e.target.closest("[data-tog]"); if(t){closed[t.dataset.tog]=!closed[t.dataset.tog];render();return;}
+  if(e.target.closest("#availBtn")){availOpen=!availOpen;render();return;}
+  const av=e.target.closest("[data-avail]"); if(av){avail[who]=av.dataset.avail;render();return;}
+  if(e.target.closest("[data-avail-close]")){availOpen=false;render();return;}
+  if(availOpen&&!e.target.closest(".pop")){availOpen=false;render();}
+  const f=e.target.closest("[data-filter]"); if(f){filter=(filter===f.dataset.filter)?null:f.dataset.filter; closed={}; render(); return;}
+  const j=e.target.closest("[data-jump]"); if(j){closed[j.dataset.jump]=false;render();document.querySelector(`[data-id="${j.dataset.jump}"]`).scrollIntoView({behavior:"smooth",block:"start"});return;}
+  const n=e.target.closest("#nav button"); if(n){go(n.dataset.s);return;}
+});
+const ps=document.getElementById("persona");
+ps.innerHTML=ORDER.map(k=>`<button data-p="${k}" class="${k===who?"on":""}">${PEOPLE[k].name} · ${PEOPLE[k].role}</button>`).join("");
+ps.onclick=e=>{const b=e.target.closest("button"); if(!b) return; who=b.dataset.p; filter=null; availOpen=false; ps.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b)); render();};
+document.getElementById("device").onclick=e=>{const b=e.target.closest("button"); if(!b) return; document.querySelectorAll("#device button").forEach(x=>x.classList.toggle("on",x===b)); document.body.classList.toggle("phone",b.dataset.d==="phone");};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeDrawer(); if(availOpen){availOpen=false;render();}}});
+render();
+</script>
+</body>
+</html>
